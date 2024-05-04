@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: myFont;
+    src: url('./assets/font/saysettha_ot.ttf');
+  }
+  *{
+    font-family: myFont;
+  }
