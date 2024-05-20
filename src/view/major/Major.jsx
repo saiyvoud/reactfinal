@@ -9,15 +9,15 @@ export const Major = () => {
         <h1>Majors</h1>
         <div>
           <button
-            onClick={() => (window.location.href = "/")}
+            onClick={() => (window.location.href = "/addMajor")}
             className="bg-blue-400 text-white font-bold border shadow-sm rounded-lg p-2"
           >
             ເພີ່ມສາຂາ
           </button>
         </div>
       </div>
-      <CardMajor/>
-    
+      <CardMajor />
+
     </div>
   </Sidebar>;
 };

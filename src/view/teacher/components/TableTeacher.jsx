@@ -9,7 +9,7 @@ const TableTeacher = () => {
       <table className="w-full  ">
         <thead>
           <tr className=" bg-blue-500 text-white font-bold ">
-            <th className="py-2">ລະຫັດແາຈານ</th>
+            <th className="py-2">ລະຫັດອາຈານ</th>
             <th>ຊື່ ແລະ ນາມສະກຸນ</th>
             <th>ປະເພດອາຈານ</th>
             <th>ເບີໂທ</th>

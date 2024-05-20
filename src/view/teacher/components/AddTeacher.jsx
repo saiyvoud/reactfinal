@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../../../components/Sidebar";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const AddTeacher = () => {
   let navigate = useNavigate();
   return (
@@ -68,7 +68,7 @@ const AddTeacher = () => {
             >
               ບັນທຶກຂໍ້ມູນ
             </button>
-            
+
             <button
               onClick={() => navigate(-1)}
               className="border border-gray-200 px-5 py-2 text-blue-500 hover:text-white font-bold rounded-lg hover:bg-amber-500"

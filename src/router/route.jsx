@@ -16,6 +16,8 @@ import Report from "../view/report/Report";
 import Register from "../view/auth/Register";
 import Login from "../view/auth/Login";
 import FormsVertfy from "../view/student/components/FormsVertfy";
+import FormAddYear from "../view/year/components/FormAddYear";
+import FormAddMajor from "../view/major/components/FormAddMajor";
 const RouterPath = () => {
   const router = createBrowserRouter([
     {
@@ -55,8 +57,15 @@ const RouterPath = () => {
       element: <Year />,
     },
     {
+      path: '/addYear',
+      element: <FormAddYear />
+    },
+    {
       path: "/major",
       element: <Major />,
+    }, {
+      path: "/addMajor",
+      element: <FormAddMajor />
     },
     {
       path: "/part",

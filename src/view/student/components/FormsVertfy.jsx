@@ -30,59 +30,59 @@ const FormsVertfy = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      if(!studentID){
+      if (!studentID) {
         setErrorStudentID("student is required!");
         setLoading(false);
         return;
       }
       setErrorStudentID("");
-      if(!name){
+      if (!name) {
         setErrorName("fullname is required");
         setLoading(false);
         return;
       }
       setErrorName("");
-      if(!birthday){
+      if (!birthday) {
         setErrorBirthday("birthday is required!");
         setLoading(false);
         return;
       }
       setErrorBirthday("")
-      if(!nationallity){
+      if (!nationallity) {
         setErrorNationallity("nationallity is required!");
         setLoading(false);
         return;
       }
       setErrorNationallity("")
-      if(!gender){
+      if (!gender) {
         setErrorGender("gender is required!");
         setLoading(false);
         return;
       }
       setErrorGender("")
-      if(!village){
+      if (!village) {
         setErrorVillage("village is required!");
         setLoading(false);
         return;
       }
-      if(!district){
-       setErrorDistrict("district is required!")
-       setLoading(false);
-       return;
+      if (!district) {
+        setErrorDistrict("district is required!")
+        setLoading(false);
+        return;
       }
-      if(!province){
+      if (!province) {
         setErrorProvince("province is required!");
         setLoading(false);
         return;
       }
       setErrorProvince("");
-      if(!tel){
+      if (!tel) {
         setErrorProvince("tel is required!");
         setLoading(false);
         return;
       }
       setErrorTel("");
-   //   const response = await 
+      //   const response = await 
     } catch (error) {
       Swal.fire({
         title: "ຜິດພາດ",
@@ -105,10 +105,10 @@ const FormsVertfy = () => {
           />
         </div>
         {errorStudentID !== "" ? (
-            <div className="flex text-red-700"> {errorStudentID} </div>
-          ) : (
-            ""
-          )}
+          <div className="flex text-red-700"> {errorStudentID} </div>
+        ) : (
+          ""
+        )}
         <div className=" mt-3">
           <p className=" mb-1">ຊື່ ແລະ ນາມສະກຸນ</p>
           <input
