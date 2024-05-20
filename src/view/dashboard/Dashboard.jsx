@@ -4,6 +4,7 @@ import Sidebar from "../../components/Sidebar";
 import UserChart from "./components/UserChart";
 import LineCharts from "../../components/LiveChart";
 import TableList from "../../components/TableList"
+import logo from "../../assets/sousaka.jpeg";
 const Dashboard = () => {
   return (
     <Sidebar>

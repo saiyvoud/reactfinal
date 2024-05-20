@@ -1,10 +1,11 @@
 import React from "react";
-import Sidebar from "../../components/Sidebar";
-
-const AddTeacher = () => {
+import { useNavigate } from "react-router-dom";
+import Sidebar from "../../../components/Sidebar";
+const ClassRoomAdd = () => {
+  let navigate = useNavigate();
   return (
     <Sidebar>
-      <div className="px-10 py-5">
+      <div className="px-10 ">
         <div className=" mt-3">
           <p className=" mb-1">Teacher ID</p>
           <input
@@ -60,20 +61,19 @@ const AddTeacher = () => {
         </div>
 
         <div>
-          <div className=" my-5 flex justify-center">
+          <div className=" my-5 flex justify-center grid-cols-2 gap-4">
             <button
               onClick={() => alert("Add Teacher Success")}
               className="bg-blue-500 px-5 py-2 text-white font-bold rounded-lg hover:bg-indigo-600"
             >
               ບັນທຶກຂໍ້ມູນ
             </button>
-          </div>
-          <div className=" my-5 flex justify-center">
+
             <button
-              onClick={() => alert("Add Teacher Success")}
-              className="bg-blue-500 px-5 py-2 text-white font-bold rounded-lg hover:bg-indigo-600"
+              onClick={() => navigate(-1)}
+              className="border border-gray-200 px-5 py-2 text-blue-500 hover:text-white font-bold rounded-lg hover:bg-amber-500"
             >
-              ບັນທຶກຂໍ້ມູນ
+              ກັບຄືນ
             </button>
           </div>
         </div>
@@ -82,4 +82,4 @@ const AddTeacher = () => {
   );
 };
 
-export default AddTeacher;
+export default ClassRoomAdd;

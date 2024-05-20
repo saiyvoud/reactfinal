@@ -1,6 +1,7 @@
 import React from "react";
 import { FaBars, FaDoorOpen } from "react-icons/fa";
 import { ExitToApp } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="w-full h-20 bg-white px-4 py-3 shadow-lg flex justify-between">
@@ -14,7 +15,7 @@ const Navbar = () => {
         </div>
 
         <div className="px-5 text-sm">Saiyvoud</div>
-        <ExitToApp className="cursor-pointer h-20"></ExitToApp>
+        <Link to='/login' className="cursor-pointer"><ExitToApp ></ExitToApp></Link>
       </div>
     </nav>
    

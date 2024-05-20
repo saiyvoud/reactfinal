@@ -10,17 +10,13 @@ import {
   FaChalkboardTeacher,
   FaBook,
   FaCheckSquare,
-  FaSquare
+  FaSquare,
 } from "react-icons/fa";
 import Navbar from "./Navbar";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
-  // const [activeLink, setActiveLink] = useState(location.pathname);
-  // const handleLinkClick = (path) => {
-  //   setActive(path);
-  //   setClick(false);
-  // };
+  
   const data = [
     {
       title: "ໜ້າຫຼັກ",
@@ -28,14 +24,27 @@ const Sidebar = ({ children }) => {
       path: "/",
     },
     { title: "ນັກຮຽນ", icon: <FaUser />, path: "/student" },
-    { title: "ອາຈານ", icon: <FaChalkboardTeacher />, path: "/teacher" },
-    { title: "ຫ້ອງຮຽນ", icon: <FaSchool />, path: "/teacher" },
-    { title: "ສົກຮຽນ", icon: <FaCalendar />, path: "/teacher" },
-    { title: "ສາຂາ", icon: <FaChalkboard />, path: "/teacher" },
-    { title: "ພາກຮຽນ", icon: <FaSchool />, path: "/teacher" },
-    { title: "ວິຊາ", icon: <FaBook />, path: "/teacher" },
-    { title: "ເຊັກລາຍຊື່", icon: <FaCheckSquare />, path: "/teacher" },
-    { title: "ລາຍງານ", icon: <FaFile />, path: "/teacher" },
+    {
+      title: "ອາຈານ",
+      icon: <FaChalkboardTeacher />,
+      path: "/teacher",
+    },
+
+    { title: "ສົກຮຽນ", icon: <FaCalendar />, path: "/year" },
+    { title: "ສາຂາ", icon: <FaChalkboard />, path: "/major" },
+    { title: "ພາກ", icon: <FaSchool />, path: "/part" },
+    { title: "ວິຊາ", icon: <FaBook />, path: "/subject" },
+    {
+      title: "ຫ້ອງ",
+      icon: <FaSchool />,
+      path: "/class_room",
+    },
+    {
+      title: "ເຊັກລາຍຊື່",
+      icon: <FaCheckSquare />,
+      path: "/checklist",
+    },
+    { title: "ລາຍງານ", icon: <FaFile />, path: "/report" },
   ];
   return (
     <div className="flex w-full ">
@@ -48,18 +57,29 @@ const Sidebar = ({ children }) => {
           <hr />
           <div className=" text-white font-bold mt-4">
             {data.map((items, index) => (
-              <NavLink
-                key={index}
-                to={items.path}
-                className={({ isActive }) =>
-                  isActive
-                    ? " flex mb-2 rounded shadow bg-blue-500 py-2 px-1"
-                    : " flex mb-2 rounded hover:shadow hover:bg-blue-500 py-2 px-1"
-                }
-              >
-                <div className="mr-3 text-xl font-bold">{items.icon}</div>
-                {items.title}
-              </NavLink>
+              <div>
+                <>
+                  {items.status == true ? (
+                    <div className="w-full  h-[20%] text-sm text-slate-300 ">
+                      ຈັດການຫ້ອງຮຽນ
+                    </div>
+                  ) : (
+                    <div />
+                  )}
+                </>
+                <NavLink
+                  key={index}
+                  to={items.path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? " flex mb-2 rounded shadow bg-blue-500 py-2 px-1"
+                      : " flex mb-2 rounded hover:shadow hover:bg-blue-500 py-2 px-1"
+                  }
+                >
+                  <div className="mr-3 text-xl font-bold">{items.icon}</div>
+                  {items.title}
+                </NavLink>
+              </div>
             ))}
           </div>
         </div>
