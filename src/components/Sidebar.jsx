@@ -11,12 +11,16 @@ import {
   FaBook,
   FaCheckSquare,
   FaSquare,
+  FaChevronRight,
+  FaChevronDown
 } from "react-icons/fa";
+import { MdManageAccounts } from "react-icons/md";
 import Navbar from "./Navbar";
 import { NavLink } from "react-router-dom";
+import DropdownSide from "./DropdownSide";
 
 const Sidebar = ({ children }) => {
-  
+
   const data = [
     {
       title: "ໜ້າຫຼັກ",
@@ -29,16 +33,12 @@ const Sidebar = ({ children }) => {
       icon: <FaChalkboardTeacher />,
       path: "/teacher",
     },
-
-    { title: "ສົກຮຽນ", icon: <FaCalendar />, path: "/year" },
-    { title: "ສາຂາ", icon: <FaChalkboard />, path: "/major" },
-    { title: "ພາກ", icon: <FaSchool />, path: "/part" },
-    { title: "ວິຊາ", icon: <FaBook />, path: "/subject" },
     {
-      title: "ຫ້ອງ",
-      icon: <FaSchool />,
-      path: "/class_room",
-    },
+      title: 'dropdown',
+      icon: <MdManageAccounts />,
+      element: <DropdownSide />
+    }
+    ,
     {
       title: "ເຊັກລາຍຊື່",
       icon: <FaCheckSquare />,
@@ -46,6 +46,8 @@ const Sidebar = ({ children }) => {
     },
     { title: "ລາຍງານ", icon: <FaFile />, path: "/report" },
   ];
+
+  const [dropdown, setDropdown] = useState(false)
   return (
     <div className="flex w-full ">
       <div className="w-64 bg-[#152259] fixed top-0 left-0 z-50 h-full  px-4 py-2">
@@ -57,30 +59,53 @@ const Sidebar = ({ children }) => {
           <hr />
           <div className=" text-white font-bold mt-4">
             {data.map((items, index) => (
-              <div>
-                <>
-                  {items.status == true ? (
-                    <div className="w-full  h-[20%] text-sm text-slate-300 ">
-                      ຈັດການຫ້ອງຮຽນ
-                    </div>
-                  ) : (
-                    <div />
-                  )}
-                </>
-                <NavLink
-                  key={index}
-                  to={items.path}
-                  className={({ isActive }) =>
-                    isActive
-                      ? " flex mb-2 rounded shadow bg-blue-500 py-2 px-1"
-                      : " flex mb-2 rounded hover:shadow hover:bg-blue-500 py-2 px-1"
-                  }
-                >
-                  <div className="mr-3 text-xl font-bold">{items.icon}</div>
-                  {items.title}
-                </NavLink>
+              <div className=" flex flex-col justify-center">
+                {
+                  (items.title === "dropdown")
+                    ?
+                    <NavLink className={({ isActive }) =>
+                      isActive
+                        ? " flex "
+                        : " flex mb-2 rounded hover:shadow hover:bg-blue-500 py-2 px-1"
+                    }>
+                      <DropdownSide />
+                    </NavLink>
+                    :
+                    <>
+
+
+                      <div>
+                        <>
+                          {items.status == true ? (
+                            <div className="w-full  h-[20%] text-sm text-slate-300 ">
+                              ຈັດການຫ້ອງຮຽນ
+                            </div>
+                          ) : (
+                            <div />
+                          )}
+                        </>
+                        <NavLink
+                          key={index}
+                          to={items.path}
+                          className={({ isActive }) =>
+                            isActive
+                              ? " flex mb-2 rounded shadow bg-blue-500 py-2 px-1"
+                              : " flex mb-2 rounded hover:shadow hover:bg-blue-500 py-2 px-1"
+                          }
+                        >
+                          <div>
+                            <div className=" flex items-center">
+                              <div className="mr-3 text-xl font-bold">{items.icon}</div>
+                              {items.title}
+                            </div>
+                          </div>
+                        </NavLink>
+                      </div>
+                    </>
+                }
               </div>
             ))}
+
           </div>
         </div>
       </div>
