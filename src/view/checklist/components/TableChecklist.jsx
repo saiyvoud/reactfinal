@@ -10,6 +10,7 @@ function TableChecklist() {
                 <table className="w-full  ">
                     <thead>
                         <tr className=" bg-blue-500 text-white font-bold  text-sm">
+                            <th className="py-2">ເລືອກ</th>
                             <th className="py-2">ລະຫັດນັກສຶກສາ</th>
                             <th>ຊື່ ແລະ ນາມສະກຸນ</th>
                             <th>ວິຊາຮຽນ</th>
@@ -22,6 +23,9 @@ function TableChecklist() {
                     </thead>
                     <tbody>
                         <tr className="border-b  text-sm">
+                            <td className="text-center py-2">
+                                <input type="checkbox" name="checkbox" id="checkbox" />
+                            </td>
                             <td className="text-center py-2">ST001</td>
                             <td className="flex items-center py-2 gap-2 justify-center">
                                 {/* <img src={sousaka} width={25} className="rounded-full"></img> */}

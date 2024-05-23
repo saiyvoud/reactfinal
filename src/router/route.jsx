@@ -18,6 +18,7 @@ import Login from "../view/auth/Login";
 import FormsVertfy from "../view/student/components/FormsVertfy";
 import FormAddYear from "../view/year/components/FormAddYear";
 import FormAddMajor from "../view/major/components/FormAddMajor";
+import AccessRight from "../view/accessRight/AccessRight";
 const RouterPath = () => {
   const router = createBrowserRouter([
     {
@@ -74,6 +75,10 @@ const RouterPath = () => {
     {
       path: "/subject",
       element: <Subject />,
+    },
+    {
+      path: "/access_right",
+      element: <AccessRight />
     },
     {
       path: "/checklist",
