@@ -19,6 +19,8 @@ import FormsVertfy from "../view/student/components/FormsVertfy";
 import FormAddYear from "../view/year/components/FormAddYear";
 import FormAddMajor from "../view/major/components/FormAddMajor";
 import AccessRight from "../view/accessRight/AccessRight";
+import TableAll from "../view/table/TableAll";
+import AddTableRoom from "../view/table/components/AddTableRoom";
 const RouterPath = () => {
   const router = createBrowserRouter([
     {
@@ -78,7 +80,11 @@ const RouterPath = () => {
     },
     {
       path: "/table",
-      element: <AccessRight />
+      element: <TableAll />
+    },
+    {
+      path: "/addTableRoom",
+      element: <AddTableRoom />
     },
     {
       path: "/access_right",
