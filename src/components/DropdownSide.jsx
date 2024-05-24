@@ -13,7 +13,9 @@ import {
     FaSquare,
     FaChevronDown,
     FaChevronRight
+
 } from "react-icons/fa";
+import { FaBorderAll } from "react-icons/fa6";
 import { MdManageAccounts } from "react-icons/md";
 import { NavLink } from 'react-router-dom';
 
@@ -43,6 +45,11 @@ function DropdownSide() {
             title: "ຫ້ອງ",
             icon: <FaSchool />,
             path: "/class_room",
+        },
+        {
+            title: "ຕາຕະລາງ",
+            icon: <FaBorderAll />,
+            path: "/table",
         }
     ]
 

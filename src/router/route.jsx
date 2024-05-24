@@ -77,6 +77,10 @@ const RouterPath = () => {
       element: <Subject />,
     },
     {
+      path: "/table",
+      element: <AccessRight />
+    },
+    {
       path: "/access_right",
       element: <AccessRight />
     },
