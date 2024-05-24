@@ -52,6 +52,7 @@ const Sidebar = ({ children }) => {
     },
     { title: "ລາຍງານ", icon: <FaFile />, path: "/report" },
   ];
+  
   return (
     <div className="flex w-full ">
       <div className="w-64 bg-[#152259] fixed top-0 left-0 z-50 h-full  px-4 py-2">
