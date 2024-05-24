@@ -1,16 +1,57 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../assets/sousaka.jpeg";
-
-// import component
-import { SidebarData } from './SidebarData'
-
-
-import Navbar from "./Navbar";
+import {
+  FaHome,
+  FaUser,
+  FaSchool,
+  FaChalkboard,
+  FaFile,
+  FaCalendar,
+  FaChalkboardTeacher,
+  FaBook,
+  FaCheckSquare,
+  FaSquare,
+  FaChevronRight,
+  FaChevronDown
+} from "react-icons/fa";
+import { MdManageAccounts } from "react-icons/md";
+import { RiAdminFill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
-import Submenu from "./Submenu";
+
+import DropdownSide from "./DropdownSide";
+import Navbar from "./Navbar";
 
 const Sidebar = ({ children }) => {
 
+  const data = [
+    {
+      title: "ໜ້າຫຼັກ",
+      icon: <FaHome />,
+      path: "/",
+    },
+    { title: "ນັກຮຽນ", icon: <FaUser />, path: "/student" },
+    {
+      title: "ອາຈານ",
+      icon: <FaChalkboardTeacher />,
+      path: "/teacher",
+    },
+    {
+      title: 'dropdown',
+      icon: <MdManageAccounts />,
+      element: <DropdownSide />
+    },
+    {
+      title: 'ສິດເຂົ້າໃຊ້',
+      icon: <RiAdminFill />,
+      path: '/access_right'
+    },
+    {
+      title: "ເຊັກລາຍຊື່",
+      icon: <FaCheckSquare />,
+      path: "/checklist",
+    },
+    { title: "ລາຍງານ", icon: <FaFile />, path: "/report" },
+  ];
 
   return (
     <div className="flex w-full ">
@@ -21,16 +62,28 @@ const Sidebar = ({ children }) => {
             Souksavath College
           </h1>
           <hr />
+          <div className=" text-white font-bold mt-4">
+            {data.map((item, index) => (
+              <div key={index}>
 
-          {/* Menu */}
-          {
-            SidebarData.map((item, index) => {
-              return <div>
-                <Submenu item={item} id={index} />
+                {item.title === "dropdown" ? (
+                  <div className="mb-2">
+
+                    <DropdownSide />
+                  </div>
+                ) : (
+                  <NavLink
+                    key={index}
+                    to={item.path}
+                    className="flex mb-2 rounded hover:shadow hover:bg-blue-500 py-2 px-1"
+                  >
+                    <div className="mr-3 text-xl font-bold">{item.icon}</div>
+                    {item.title}
+                  </NavLink>
+                )}
               </div>
-
-            })
-          }
+            ))}
+          </div>
         </div>
       </div>
       {/* Navbar */}
