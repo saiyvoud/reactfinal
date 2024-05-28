@@ -10,7 +10,7 @@ function AccessList() {
             <div className=' flex flex-col gap-y-2 mb-3'>
                 <div className=' grid grid-cols-[2fr,1fr,1fr,1fr] items-center'>
                     <div className=' flex items-center'>
-                        <div className=' w-14 border-4 mr-3 rounded-full border-white' >
+                        <div className=' w-14 mr-3 rounded-full' >
                             <img src={userImg} alt="" />
                         </div>
                         <h4 className=' text-[18px] font-semibold'>Saysamone dongchan</h4>
@@ -19,9 +19,10 @@ function AccessList() {
                     <p className=' text-start'>Username</p>
                     <p className=' text-start'>Admin</p>
                 </div>
+                <hr />
                 <div className=' grid grid-cols-[2fr,1fr,1fr,1fr] items-center'>
                     <div className=' flex items-center'>
-                        <div className=' w-14 border-4 mr-3 rounded-full border-white' >
+                        <div className=' w-14 mr-3 rounded-full' >
                             <img src={userImg} alt="" />
                         </div>
                         <h4 className=' text-[18px] font-semibold'>Bobby Thammavong</h4>
@@ -30,9 +31,10 @@ function AccessList() {
                     <p className=' text-start'>Username</p>
                     <p className=' text-start'>Staff</p>
                 </div>
+                <hr />
                 <div className=' grid grid-cols-[2fr,1fr,1fr,1fr] items-center'>
                     <div className=' flex items-center'>
-                        <div className=' w-14 border-4 mr-3 rounded-full border-white' >
+                        <div className=' w-14 mr-3 rounded-full' >
                             <img src={userImg} alt="" />
                         </div>
                         <h4 className=' text-[18px] font-semibold'>Mackie Inthanin</h4>
@@ -43,16 +45,16 @@ function AccessList() {
                 </div>
             </div>
             <div className=' flex items-center w-full gap-5 text-[18px] justify-center'>
-                <FaAnglesLeft />
+                <FaAnglesLeft className=' cursor-pointer' />
                 <div className=' flex'>
                     {pageNum.map((page, id) => (
                         <div key={id}
                             className=' mx-5'>
-                            {page === pageNo ? <span className=' border border-blue-500 rounded px-2'>{pageNum[pageNo - 1]}</span> : <span>{page}</span>}
+                            {page === pageNo ? <span className=' border border-blue-500 rounded px-2 cursor-pointer'>{pageNum[pageNo - 1]}</span> : <span className=' cursor-pointer'>{page}</span>}
                         </div>
                     ))}
                 </div>
-                <FaAnglesRight />
+                <FaAnglesRight className=' cursor-pointer' />
             </div>
         </div>
     )
