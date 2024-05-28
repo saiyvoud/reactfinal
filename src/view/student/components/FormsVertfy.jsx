@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../../components/Sidebar";
 import Swal from "sweetalert2";
+import { VerifyStudent } from "../../../api/student";
 
 const FormsVertfy = () => {
   let navigate = useNavigate();
@@ -26,7 +27,7 @@ const FormsVertfy = () => {
   const [errorDistrict, setErrorDistrict] = useState("");
   const [errorProvince, setErrorProvince] = useState("");
   const [errorTel, setErrorTel] = useState("");
-  const handleVerifyStudent = (e) => {
+  const handleVerifyStudent = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -47,26 +48,26 @@ const FormsVertfy = () => {
         setLoading(false);
         return;
       }
-      setErrorBirthday("")
+      setErrorBirthday("");
       if (!nationallity) {
         setErrorNationallity("nationallity is required!");
         setLoading(false);
         return;
       }
-      setErrorNationallity("")
+      setErrorNationallity("");
       if (!gender) {
         setErrorGender("gender is required!");
         setLoading(false);
         return;
       }
-      setErrorGender("")
+      setErrorGender("");
       if (!village) {
         setErrorVillage("village is required!");
         setLoading(false);
         return;
       }
       if (!district) {
-        setErrorDistrict("district is required!")
+        setErrorDistrict("district is required!");
         setLoading(false);
         return;
       }
@@ -82,7 +83,30 @@ const FormsVertfy = () => {
         return;
       }
       setErrorTel("");
-      //   const response = await 
+      const response = await VerifyStudent(
+        studentID,
+        name,
+        birthday,
+        nationallity,
+        gender,
+        village,
+        district,
+        province,
+        tel
+      );
+      if (response) {
+        Swal.fire({
+          title: "ສຳເລັດ",
+          text: "ຢືນຢັນນັກສຶກສາສຳເລັດ",
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "ຜິດພາດ",
+          text: "ຜິດພາດ",
+          icon: "error",
+        });
+      }
     } catch (error) {
       Swal.fire({
         title: "ຜິດພາດ",

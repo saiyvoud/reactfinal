@@ -12,7 +12,7 @@ import {
   FaCheckSquare,
   FaSquare,
   FaChevronRight,
-  FaChevronDown
+  FaChevronDown,
 } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 import { RiAdminFill } from "react-icons/ri";
@@ -22,7 +22,6 @@ import DropdownSide from "./DropdownSide";
 import Navbar from "./Navbar";
 
 const Sidebar = ({ children }) => {
-
   const data = [
     {
       title: "ໜ້າຫຼັກ",
@@ -36,14 +35,14 @@ const Sidebar = ({ children }) => {
       path: "/teacher",
     },
     {
-      title: 'dropdown',
+      title: "dropdown",
       icon: <MdManageAccounts />,
-      element: <DropdownSide />
+      element: <DropdownSide />,
     },
     {
-      title: 'ສິດເຂົ້າໃຊ້',
+      title: "ສິດເຂົ້າໃຊ້",
       icon: <RiAdminFill />,
-      path: '/access_right'
+      path: "/access_right",
     },
     {
       title: "ເຊັກລາຍຊື່",
@@ -52,7 +51,7 @@ const Sidebar = ({ children }) => {
     },
     { title: "ລາຍງານ", icon: <FaFile />, path: "/report" },
   ];
-  
+
   return (
     <div className="flex w-full ">
       <div className="w-64 bg-[#152259] fixed top-0 left-0 z-50 h-full  px-4 py-2">
@@ -65,10 +64,8 @@ const Sidebar = ({ children }) => {
           <div className=" text-white font-bold mt-4">
             {data.map((item, index) => (
               <div key={index}>
-
                 {item.title === "dropdown" ? (
                   <div className="mb-2">
-
                     <DropdownSide />
                   </div>
                 ) : (

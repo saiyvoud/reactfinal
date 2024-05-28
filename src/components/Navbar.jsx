@@ -2,6 +2,7 @@ import React from "react";
 import { FaBars, FaDoorOpen } from "react-icons/fa";
 import { ExitToApp } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <nav className="w-full h-20 bg-white px-4 py-3 shadow-lg flex justify-between">
