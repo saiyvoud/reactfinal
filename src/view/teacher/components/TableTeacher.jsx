@@ -3,7 +3,7 @@ import sousaka from "../../../assets/sousaka.jpeg";
 import { ModeOutlined } from "@mui/icons-material";
 import IconDelete from "../../../assets/icon/delete.svg";
 import { NavLink } from "react-router-dom";
-const TableTeacher = () => {
+const TableTeacher = ({ data, loading }) => {
   return (
     <div className=" mt-5">
       <table className="w-full  ">
@@ -20,29 +20,33 @@ const TableTeacher = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="border-b">
-            <td className="text-center py-2">TCI001</td>
-            <td className="flex items-center py-2 gap-2 justify-center">
-              <img src={sousaka} width={25} className="rounded-full"></img>
-              Saiyvoud Somanong
-            </td>
-            <td className="text-center">Expert</td>
-            <td className="text-center">02096794376</td>
+          <>
+            {data.map((item, index) => (
+              <tr className="border-b" key={index}>
+                <td className="text-center py-2">{item.tID}</td>
+                <td className="flex items-center py-2 gap-2 justify-center">
+                  <img src={sousaka} width={25} className="rounded-full"></img>
+                  {item.tName} {item.tSurname}
+                </td>
+                <td className="text-center">{item.tType}</td>
+                <td className="text-center">{item.tel}</td>
 
-            <td className="text-center">39</td>
-            <td className="text-center">male</td>
+                <td className="text-center">{item.age}</td>
+                <td className="text-center">{item.gender}</td>
 
-            <td className="text-center">
-              <NavLink to="/student">
-                <ModeOutlined />
-              </NavLink>
-            </td>
-            <td className="text-center">
-              <NavLink to="/student">
-                <img src={IconDelete}></img>
-              </NavLink>
-            </td>
-          </tr>
+                <td className="text-center">
+                  <NavLink to="/student">
+                    <ModeOutlined />
+                  </NavLink>
+                </td>
+                <td className="text-center">
+                  <NavLink to="/student">
+                    <img src={IconDelete}></img>
+                  </NavLink>
+                </td>
+              </tr>
+            ))}
+          </>
         </tbody>
       </table>
     </div>

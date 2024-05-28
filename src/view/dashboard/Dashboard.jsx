@@ -15,7 +15,7 @@ const Dashboard = () => {
             <UserChart />
           </div>
            <div className="bg-white shadow-lg rounded-lg h-[400px]">
-           <LineCharts />
+           {/* <LineCharts /> */}
            </div>
 
         </div>

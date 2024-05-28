@@ -54,7 +54,6 @@ function DropdownSide() {
     ]
 
     const dropdownn = useDropdownStore((state) => state.dropdown);
-    console.log(dropdownn)
     const setDropdown = useDropdownStore((state) => state.setDropdown);
     return (
         <div

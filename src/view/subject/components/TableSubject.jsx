@@ -3,7 +3,8 @@ import sousaka from "../../../assets/sousaka.jpeg";
 import { ModeOutlined } from "@mui/icons-material";
 import IconDelete from "../../../assets/icon/delete.svg";
 import { NavLink } from "react-router-dom";
-function TableSubject() {
+import { timeFormatter } from "../../../view/helpers/index";
+function TableSubject({data, loading}) {
     return (
         <div>
             <div className=" mt-5">
@@ -22,17 +23,20 @@ function TableSubject() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="border-b  text-sm">
-                            <td className="text-center py-2">SJ001</td>
+                        <>
+                        {
+                            data.map((item, index) => (
+                                <tr className="border-b  text-sm" key={index}>
+                            <td className="text-center py-2">{item.subID}</td>
                             <td className="flex items-center py-2 gap-2 justify-center">
                                 {/* <img src={sousaka} width={25} className="rounded-full"></img> */}
-                                ການພັດທະນາໂປຣແກຣມ
+                                {item.subName}
                             </td>
-                            <td className="text-center">08:30</td>
-                            <td className="text-center">ປ.ຕ ອຈ ທະນູໄຊ</td>
-                            <td className="text-center">ປະເພດ...</td>
-                            <td className="text-center">14/2/2019</td>
-                            <td className="text-center">15/2/2019</td>
+                            <td className="text-center">{item.subTime}</td>
+                            <td className="text-center">{item.tName}</td>
+                            <td className="text-center">{item.tType}</td>
+                            <td className="text-center">{timeFormatter(item.createdAt)}</td>
+                            <td className="text-center">{timeFormatter(item.updatedAt)}</td>
                             <td className="text-center">
                                 <NavLink to="/add_class_room">
                                     <ModeOutlined />
@@ -44,6 +48,9 @@ function TableSubject() {
                                 </NavLink>
                             </td>
                         </tr>
+                            ))
+                        }
+                        </>
                     </tbody>
                 </table>
             </div>

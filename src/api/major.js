@@ -1,29 +1,28 @@
-export const addMajor = async (title,image)=>{
-    const data = {
-        email: email,
-        password: password,
-      };
+import axios from "axios";
+import ApiPath from "./api.path.js";
+
+function token() {
+  return localStorage.getItem("token")
+};
+
+export const GetAllMajorApi = async () => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer '+ token()
+    },
+  };
+  try {
+    const response = await axios.get(ApiPath.getAllMajor, config);
     
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-    
-      try {
-        const response = await axios.post(ApiPath.login, data, config);
-         console.log(response);
-        if (response.data.success === true) {
-          localStorage.setItem("token", response.data.data.token);
-          localStorage.setItem("expiresIn", response.data.data.expiresIn);
-          localStorage.setItem("refreshToken", response.data.data.refreshToken);
-              
-          return true;
-        } else {
-          return false;
-        }
-      } catch (error) {
-        console.log(error);
-        return false;
-      }
+    if (response.data.success === true) {
+      return response?.data?.data;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+
 }

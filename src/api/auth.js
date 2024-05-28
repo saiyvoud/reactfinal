@@ -21,6 +21,8 @@ export const LoginApi = async ( email, password ) => {
       localStorage.setItem("expiresIn", response.data.data.expiresIn);
       localStorage.setItem("refreshToken", response.data.data.refreshToken);
           
+      console.log("token::=>");
+      console.log(response.data.data.token);
       return true;
     } else {
       return false;
