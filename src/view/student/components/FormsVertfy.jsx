@@ -11,7 +11,7 @@ const FormsVertfy = () => {
   const [name, setName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [nationallity, setNationallity] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("ຊາຍ");
   const [village, setVillage] = useState("");
   const [district, setDistrict] = useState("");
   const [province, setProvince] = useState("");
@@ -171,7 +171,7 @@ const FormsVertfy = () => {
             onChange={(e) => setGender(e.target.value)}
             className="border rounded-lg w-full px-1 py-1 "
           >
-            <option disabled selected>
+            <option disabled>
               ເພດ
             </option>
             <option>ຊາຍ</option>

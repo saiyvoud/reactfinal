@@ -4,7 +4,9 @@ import { ModeOutlined } from "@mui/icons-material";
 import IconDelete from "../../../assets/icon/delete.svg";
 import { NavLink } from "react-router-dom";
 import { timeFormatter } from "../../helpers";
-function TablePart({ data, loading }) {
+import DeleteButton from "../../../components/DeleteButton";
+import { DeletePartApi } from "../../../api/part";
+function TablePart({ data, loading, onDeleteSuccess }) {
   return (
     <div>
       <div className=" mt-5">
@@ -31,14 +33,12 @@ function TablePart({ data, loading }) {
                   <td className="text-center">{timeFormatter(item.createdAt)}</td>
                   <td className="text-center">{timeFormatter(item.updatedAt)}</td>
                   <td className="text-center">
-                    <NavLink to="/add_class_room">
+                    <NavLink to={`/part/edit/${item.pUuid}`}>
                       <ModeOutlined />
                     </NavLink>
                   </td>
                   <td className="text-center">
-                    <NavLink to="/student">
-                      <img src={IconDelete}></img>
-                    </NavLink>
+                    <DeleteButton id={item.pUuid} onSuccess={onDeleteSuccess} deleteApi={DeletePartApi}/>
                   </td>
                 </tr>
               ))}

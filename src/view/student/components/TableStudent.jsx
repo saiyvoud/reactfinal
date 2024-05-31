@@ -1,9 +1,11 @@
 import React from "react";
 import sousaka from "../../../assets/sousaka.jpeg";
-import { ModeOutlined } from "@mui/icons-material";
+import { ModeOutlined, DeleteOutline } from "@mui/icons-material";
 import IconDelete from "../../../assets/icon/delete.svg";
 import { NavLink } from "react-router-dom";
-const TableStudent = ({ data, loading }) => {
+import DeleteButton from "../../../components/DeleteButton";
+import { DeleteStudentApi } from "../../../api/student";
+const TableStudent = ({ data, loading, onDeleteSuccess }) => {
 
   return (
     <div className=" mt-5">
@@ -39,14 +41,12 @@ const TableStudent = ({ data, loading }) => {
                 <td className="text-center">{item.tel}</td>
                 <td className="text-center">{item.nationallity}</td>
                 <td className="text-center">
-                  <NavLink to="/student">
+                  <NavLink to={`/student/edit/${item.sID}`}>
                     <ModeOutlined />
                   </NavLink>
                 </td>
                 <td className="text-center">
-                  <NavLink to="/student">
-                    <img src={IconDelete}></img>
-                  </NavLink>
+                  <DeleteButton id={item.sUuid} onSuccess={onDeleteSuccess} deleteApi={DeleteStudentApi}/>
                 </td>
               </tr>
             ))}

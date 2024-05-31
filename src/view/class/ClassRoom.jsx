@@ -6,11 +6,14 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { GetAllClassApi } from "../../api/class";
+import Empty from "../../components/Empty";
+import SearchBar from "../../components/SearchBar";
 const ClassRoom = () => {
 
   
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [initDataForSearch, setInitDataForSearch] = useState([]);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -30,12 +33,13 @@ const ClassRoom = () => {
       console.log("classroom data::=>");
       console.log(response);
       setData(response)
+      setInitDataForSearch(response)
       setLoading(false);
     }
 
     // TODO [ERROR]
     // BackEnd error not known sql field "termNo"
-    //fetchData();
+    // fetchData();
   }, [])
 
 
@@ -56,18 +60,10 @@ const ClassRoom = () => {
             </button>
           </div>
         </div>
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="ຄົ້ນຫາ..."
-            className="py-2 px-10 w-full bg-slate-100 rounded-lg"
-          ></input>
-          <div className="text-slate-400 absolute left-2 top-[6px]">
-            <Search></Search>
-          </div>
-        </div>
+        <SearchBar placeholder={"ຄົ້ນຫາຫ້ອງ..."} data={initDataForSearch} onSearch={(result) => setData(result)} />
         <TableClassRoom data={data} loading={loading} />
-        <Loading loading={loading} className="mt-4" />
+        <Loading show={loading} className="mt-4" />
+        <Empty show={data.length == 0 && !loading} />
       </div>
     </Sidebar>
   );

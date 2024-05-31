@@ -8,31 +8,37 @@ import { useNavigate } from "react-router-dom";
 import { GetAllTeacherApi } from "../../api/teacher";
 import Loading from "../../components/Loading";
 import { GetAllPartApi } from "../../api/part";
+import Empty from "../../components/Empty";
+import SearchBar from "../../components/SearchBar";
 const Part = () => {
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [initDataForSearch, setInitDataForSearch] = useState([]);
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const response = await GetAllPartApi();
-      if(!response){
-        Swal.fire({
-          title: "ຜິດພາດ",
-          text: "ບໍ່ສາມາດດິງຂໍ້ມູນພາກໄດ້ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ",
-          icon: "error",
-        });
-        setLoading(false);
-        //navigate("/login");
-        return;
-      }
-      console.log("part data::=>");
-      console.log(response);
-      setData(response)
+  
+  const fetchData = async () => {
+    setLoading(true);
+    const response = await GetAllPartApi();
+    if(!response){
+      Swal.fire({
+        title: "ຜິດພາດ",
+        text: "ບໍ່ສາມາດດິງຂໍ້ມູນພາກໄດ້ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ",
+        icon: "error",
+      });
       setLoading(false);
+      //navigate("/login");
+      return;
     }
+    console.log("part data::=>");
+    console.log(response);
+    setData(response)
+    setInitDataForSearch(response)
+    setLoading(false);
+  }
+
+  useEffect(() => {
 
     fetchData();
   }, [])
@@ -47,25 +53,17 @@ const Part = () => {
           <h1>Part</h1>
           <div>
             <button
-              onClick={() => (window.location.href = "/")}
+              onClick={() => navigate("/part/add")}
               className="bg-blue-400 text-white font-bold border shadow-sm rounded-lg p-2"
             >
               ເພີ່ມພາກຮຽນ
             </button>
           </div>
         </div>
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="ຄົ້ນຫາ..."
-            className="py-2 px-10 w-full bg-slate-100 rounded-lg"
-          ></input>
-          <div className="text-slate-400 absolute left-2 top-[6px]">
-            <Search></Search>
-          </div>
-        </div>
-        <TablePart data={data} loading={loading} />
-        <Loading loading={loading} className="mt-4" />
+        <SearchBar placeholder={"ຄົ້ນຫາພາກ..."} data={initDataForSearch} onSearch={(result) => setData(result)} />
+        <TablePart data={data} loading={loading} onDeleteSuccess={fetchData} />
+        <Loading show={loading} className="mt-4" />
+        <Empty show={data.length == 0 && !loading} />
       </div>
     </Sidebar>
   )

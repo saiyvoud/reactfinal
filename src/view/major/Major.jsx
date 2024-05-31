@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { GetAllTeacherApi } from "../../api/teacher";
 import Loading from "../../components/Loading";
 import { GetAllMajorApi } from "../../api/major";
+import Empty from "../../components/Empty";
 
 export const Major = () => {
 
@@ -53,7 +54,8 @@ export const Major = () => {
         </div>
       </div>
       <CardMajor data={data} />
-      <Loading loading={loading} className="mt-4" />
+      <Loading show={loading} className="mt-4" />
+      <Empty show={data.length == 0 && !loading} />
 
 
     </div>

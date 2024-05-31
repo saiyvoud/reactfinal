@@ -1,7 +1,11 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 
-import Sidebar from "../components/Sidebar";
 import Dashboard from "../view/dashboard/Dashboard";
 import Student from "../view/student/Student";
 import AddTeacher from "../view/teacher/components/AddTeacher";
@@ -16,11 +20,20 @@ import Report from "../view/report/Report";
 import Register from "../view/auth/Register";
 import Login from "../view/auth/Login";
 import FormsVertfy from "../view/student/components/FormsVertfy";
-import FormAddYear from "../view/year/components/FormAddYear";
 import FormAddMajor from "../view/major/components/FormAddMajor";
 import AccessRight from "../view/accessRight/AccessRight";
 import TableAll from "../view/table/TableAll";
 import AddTableRoom from "../view/table/components/AddTableRoom";
+import Authentication from "../components/Authentication";
+import AddStudent from "../view/student/components/AddStudent";
+import EditStudent from "../view/student/components/EditStudent";
+import EditTeacher from "../view/teacher/components/EditTeacher";
+import AddYear from "../view/year/components/AddYear";
+import EditYear from "../view/year/components/EditYear";
+import AddPart from "../view/part/components/AddPart";
+import AddSubject from "../view/subject/components/AddSubject";
+import EditSubject from "../view/subject/components/EditSubject";
+import EditPart from "../view/part/components/EditPart";
 const RouterPath = () => {
   const router = createBrowserRouter([
     {
@@ -33,70 +46,203 @@ const RouterPath = () => {
     },
     {
       path: "/",
-      element: <Dashboard />,
+      element: (
+        <Authentication>
+          <Dashboard />
+        </Authentication>
+      ),
     },
     {
       path: "/student",
-      element: <Student />,
+      element: (
+        <Authentication>
+          <Student />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/student/add",
+      element: (
+        <Authentication>
+          <AddStudent />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/student/edit/:id",
+      element: (
+        <Authentication>
+          <EditStudent />
+        </Authentication>
+      ),
     },
     {
       path: "/verify_student",
-      element: <FormsVertfy />,
+      element: (
+        <Authentication>
+          <FormsVertfy />
+        </Authentication>
+      ),
     },
     {
       path: "/teacher",
-      element: <Teacher />,
+      element: (
+        <Authentication>
+          <Teacher />
+        </Authentication>
+      ),
     },
     {
-      path: "/add_teacher",
-      element: <AddTeacher />,
+      path: "/teacher/add",
+      element: (
+        <Authentication>
+          <AddTeacher />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/teacher/edit/:id",
+      element: (
+        <Authentication>
+          <EditTeacher />
+        </Authentication>
+      ),
     },
     {
       path: "/class_room",
-      element: <ClassRoom />,
+      element: (
+        <Authentication>
+          <ClassRoom />
+        </Authentication>
+      ),
     },
     {
       path: "/year",
-      element: <Year />,
+      element: (
+        <Authentication>
+          <Year />
+        </Authentication>
+      ),
     },
     {
-      path: '/addYear',
-      element: <FormAddYear />
+      path: "/year/add",
+      element: (
+        <Authentication>
+          <AddYear />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/year/edit/:id",
+      element: (
+        <Authentication>
+          <EditYear />
+        </Authentication>
+      ),
     },
     {
       path: "/major",
-      element: <Major />,
-    }, {
+      element: (
+        <Authentication>
+          <Major />
+        </Authentication>
+      ),
+    },
+    {
       path: "/addMajor",
-      element: <FormAddMajor />
+      element: (
+        <Authentication>
+          <FormAddMajor />
+        </Authentication>
+      ),
     },
     {
       path: "/part",
-      element: <Part />,
+      element: (
+        <Authentication>
+          <Part />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/part/add",
+      element: (
+        <Authentication>
+          <AddPart />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/part/edit/:id",
+      element: (
+        <Authentication>
+          <EditPart />
+        </Authentication>
+      ),
     },
     {
       path: "/subject",
-      element: <Subject />,
+      element: (
+        <Authentication>
+          <Subject />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/subject/add",
+      element: (
+        <Authentication>
+          <AddSubject />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/subject/edit/:id",
+      element: (
+        <Authentication>
+          <EditSubject />
+        </Authentication>
+      ),
     },
     {
       path: "/table",
-      element: <TableAll />
+      element: (
+        <Authentication>
+          <TableAll />
+        </Authentication>
+      ),
     },
     {
       path: "/addTableRoom",
-      element: <AddTableRoom />
+      element: (
+        <Authentication>
+          <AddTableRoom />
+        </Authentication>
+      ),
     },
     {
       path: "/access_right",
-      element: <AccessRight />
+      element: (
+        <Authentication>
+          <AccessRight />
+        </Authentication>
+      ),
     },
     {
       path: "/checklist",
-      element: <Checklist />,
+      element: (
+        <Authentication>
+          <Checklist />
+        </Authentication>
+      ),
     },
     {
       path: "/report",
-      element: <Report />,
+      element: (
+        <Authentication>
+          <Report />
+        </Authentication>
+      ),
     },
   ]);
   return <RouterProvider router={router} />;

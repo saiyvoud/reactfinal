@@ -12,7 +12,7 @@ const TableClassRoom = ({data, loading}) => {
           <tr className=" bg-blue-500 text-white font-bold  text-sm">
             <th className="py-2">ລະຫັດຫ້ອງຮຽນ</th>
             <th>ຊື່ຫ້ອງ</th>
-            <th>ປະເພດຫ້ອງ</th>
+            <th>ສາຂາ</th>
             <th>schoolYear</th>
             <th>ປີຫ້ອງ</th>
             <th>ວັນສ້າງ</th>

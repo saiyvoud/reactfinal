@@ -4,7 +4,9 @@ import { ModeOutlined } from "@mui/icons-material";
 import IconDelete from "../../../assets/icon/delete.svg";
 import { NavLink } from "react-router-dom";
 import { timeFormatter } from "../../../view/helpers/index";
-const TableYear = ({ data, loading }) => {
+import DeleteButton from "../../../components/DeleteButton";
+import { DeleteTeacherApi } from "../../../api/teacher";
+const TableYear = ({ data, loading , onDeleteSuccess }) => {
   return (
     <div className=" mt-5">
       <table className="w-full  ">
@@ -30,14 +32,12 @@ const TableYear = ({ data, loading }) => {
                 <td className="text-center">{timeFormatter(item.createdAt)}</td>
                 <td className="text-center">{timeFormatter(item.updatedAt)}</td>
                 <td className="text-center">
-                  <NavLink to="/add_class_room">
+                  <NavLink to={`/year/edit/${item.yUuid}`}>
                     <ModeOutlined />
                   </NavLink>
                 </td>
                 <td className="text-center">
-                  <NavLink to="/student">
-                    <img src={IconDelete}></img>
-                  </NavLink>
+                <DeleteButton id={item.yUuid} onSuccess={onDeleteSuccess} deleteApi={DeleteTeacherApi}/>
                 </td>
               </tr>
             ))}

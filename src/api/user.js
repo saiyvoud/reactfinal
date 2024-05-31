@@ -5,7 +5,7 @@ function token() {
   return localStorage.getItem("token")
 };
 
-export const GetAllTeacherApi = async () => {
+export const GetAllUserApi = async () => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export const GetAllTeacherApi = async () => {
     },
   };
   try {
-    const response = await axios.get(ApiPath.getAllTeacher, config);
+    const response = await axios.get(ApiPath.getAllUser, config);
     
     if (response.data.success === true) {
       return response?.data?.data;
@@ -27,64 +27,34 @@ export const GetAllTeacherApi = async () => {
 
 }
 
-export const GetOneTeacherApi = async (id) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      'Authorization': 'Bearer '+ token()
-    },
-  };
-  try {
-    const response = await axios.get(`${ApiPath.getOneTeacher}${id}`, config);    
-    if (response.data.success === true) {
-      return response?.data?.data;
-    } else {
-      return false;
-    }
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
-
-}
 
 
-export const AddTeacherApi = async (data) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      'Authorization': 'Bearer '+ token()
-    },
-  };
-  const mappingData = {
-    tName: data.tName || "",
-    tSurname: data.tSurname || "",
-    tType: data.tType || "",
-    age: data.age || "",
-    gender: data.gender || "",
-    tel: data.tel || "",
-    tID: data.tID || "",
-  }
-  try {
-    const response = await axios.post(ApiPath.addTeacher, mappingData, config);
 
-    console.log("response of fuc AddTeacher ::=>");
-    console.log(response);
-    
-    if (response.data.success === true) {
-      return response;
-    } else {
-      return false;
-    }
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
+// no route for get one
 
-}
+// export const GetOneUserApi = async (id) => {
+//   const config = {
+//     headers: {
+//       "Content-Type": "application/json",
+//       'Authorization': 'Bearer '+ token()
+//     },
+//   };
+//   try {
+//     const response = await axios.get(`${ApiPath.getOneStudent}${id}`, config);    
+//     if (response.data.success === true) {
+//       return response?.data?.data;
+//     } else {
+//       return false;
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     return false;
+//   }
+
+// }
 
 
-export const UpdateTeacherApi = async (id, data) => {
+export const AddUserApi = async (data) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -92,18 +62,16 @@ export const UpdateTeacherApi = async (id, data) => {
     },
   };
   const mappingData = {
-    tName: data?.tName || "",
-    tSurname: data?.tSurname || "",
-    tType: data?.tType || "",
-    age: data?.age || "",
-    gender: data?.gender || "",
-    tel: data?.tel || "",
-    tID: data?.tID || "",
-  };
+    uId: data?.uId || "",
+    profile: data?.profile || "",
+    role: data?.role || "",
+    email: data?.email || "",
+    password: data?.password || "",
+  }
   try {
-    const response = await axios.put(`${ApiPath.updateTeacher}${id}`, mappingData, config);
+    const response = await axios.post(ApiPath.register, mappingData, config);
 
-    console.log("response of fuc updateTeacher ::=>");
+    console.log("response of fuc addUser ::=>");
     console.log(response);
     
     if (response.data.success === true) {
@@ -118,7 +86,40 @@ export const UpdateTeacherApi = async (id, data) => {
 
 }
 
-export const DeleteTeacherApi = async (id) => {
+export const UpdateUserApi = async (id, data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer '+ token()
+    },
+  };
+  const mappingData = {
+    uId: data?.uId || "",
+    profile: data?.profile || "",
+    role: data?.role || "",
+    email: data?.email || "",
+    password: data?.password || "",
+  }
+  try {
+    const response = await axios.put(`${ApiPath.updateUser}${id}`, mappingData, config);
+
+    console.log("response of fuc updateUser ::=>");
+    console.log(response);
+    
+    if (response.data.success === true) {
+      return response;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+
+}
+
+
+export const DeleteUserApi = async (id) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -126,9 +127,9 @@ export const DeleteTeacherApi = async (id) => {
     },
   };
   try {
-    const response = await axios.delete(`${ApiPath.deleteTeacher}${id}`, config);
+    const response = await axios.delete(`${ApiPath.deleteUser}${id}`, config);
 
-    console.log("response of fuc delteTeacher ::=>");
+    console.log("response of fuc delteStudent ::=>");
     console.log(response);
     
     if (response.data.success === true) {
@@ -142,4 +143,3 @@ export const DeleteTeacherApi = async (id) => {
   }
 
 }
-

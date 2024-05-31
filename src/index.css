@@ -3,7 +3,7 @@
 @tailwind utilities;
 @font-face {
     font-family: myFont;
-    src: url('./assets/font/saysettha_ot.ttf');
+    src: url('./assets/font/NotoSansLao.ttf');
   }
   *{
     font-family: myFont;
