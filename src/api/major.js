@@ -37,7 +37,7 @@ export const GetOneMajorApi = async (id) => {
     },
   };
   try {
-    const response = await axios.get(`${ApiPath.getOneMajor}${id}`, config);    
+    const response = await axios.get(`${ApiPath.getOneMajor}${id}`, config); 
     if (response.data.success === true) {
       return response?.data?.data;
     } else {
@@ -59,7 +59,6 @@ export const AddMajorApi = async (data) => {
     },
   };
   const mappingData = {
-    mId: data?.mId || "",
     mName: data?.mName || "",
   }
   try {
@@ -88,7 +87,6 @@ export const UpdateMajorApi = async (id, data) => {
     },
   };
   const mappingData = {
-    mId: data?.mId || "",
     mName: data?.mName || "",
   }
   try {

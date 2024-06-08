@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../../../components/Sidebar";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import validationSchema from "../../service/validation";
+import validationSchema from "../../../service/validation";
 import { AddStudentApi } from "../../../api/student";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";

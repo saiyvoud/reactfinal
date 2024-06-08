@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../../../components/Sidebar";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import validationSchema from "../../service/validation";
+import validationSchema from "../../../service/validation";
 import { AddStudentApi } from "../../../api/student";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +23,7 @@ const AddYear = () => {
         <Formik
        initialValues={{
         yearNumber: "3",
+        schoolyear: "ສົກຮຽນ 2022-2023",
        }}
        validationSchema={validationSchema.year}
        onSubmit={ async (values) => {
@@ -53,9 +54,13 @@ const AddYear = () => {
          <Form>
             <h2 className="text-xl font-semibold mt-8">ເພີ່ມອາຈານ</h2>
            {/* yearNumber */}
-           <p className=" mb-1 mt-8">ເລກປີ <span className="text-red-500">*</span></p>
-           <Field disabled={isSubmitting} name="yearNumber" placeholder="ນາມສະກຸນອາຈານ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
+           <p className=" mb-1 mt-8">ປີຮຽນ <span className="text-red-500">*</span></p>
+           <Field disabled={isSubmitting} name="yearNumber" placeholder="ປີຮຽນ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
            <ErrorMessage name="yearNumber" component="div" className="text-red-500"/>
+           {/* schoolyear */}
+           <p className=" mb-1 mt-8">ສົກຮຽນ <span className="text-red-500">*</span></p>
+           <Field disabled={isSubmitting} name="schoolyear" placeholder="ສົກຮຽນ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
+           <ErrorMessage name="schoolyear" component="div" className="text-red-500"/>
 
            <div className="w-full h-20 flex justify-center items-center gap-4 mt-20 mb-20">
             <div onClick={() => navigate(-1)} disabled={isSubmitting} className="bg-gray-400 text-white font-bold border shadow-sm rounded-lg py-2 px-4 min-w-20 hover:cursor-pointer hover:opacity-80">ຍົກເລີກ</div>

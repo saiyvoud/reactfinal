@@ -42,7 +42,7 @@ const Sidebar = ({ children }) => {
     {
       title: "ສິດເຂົ້າໃຊ້",
       icon: <RiAdminFill />,
-      path: "/access_right",
+      path: "/accessRight",
     },
     {
       title: "ເຊັກລາຍຊື່",

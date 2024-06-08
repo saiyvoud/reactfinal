@@ -3,7 +3,7 @@ import sousaka from "../../../assets/sousaka.jpeg";
 import { ModeOutlined } from "@mui/icons-material";
 import IconDelete from "../../../assets/icon/delete.svg";
 import { NavLink } from "react-router-dom";
-import { timeFormatter } from "../../../view/helpers/index";
+import { timeFormatter } from "../../../helpers/index";
 import DeleteButton from '../../../components/DeleteButton';
 import { DeleteSubjectApi } from '../../../api/subject';
 function TableSubject({data, loading, onDeleteSuccess}) {

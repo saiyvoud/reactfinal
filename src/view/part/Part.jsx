@@ -11,6 +11,7 @@ import { GetAllPartApi } from "../../api/part";
 import Empty from "../../components/Empty";
 import SearchBar from "../../components/SearchBar";
 const Part = () => {
+  
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);

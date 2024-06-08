@@ -3,9 +3,10 @@ import sousaka from "../../../assets/sousaka.jpeg";
 import { ModeOutlined } from "@mui/icons-material";
 import IconDelete from "../../../assets/icon/delete.svg";
 import { NavLink } from "react-router-dom";
-import { timeFormatter } from "../../../view/helpers/index";
+import { timeFormatter } from "../../../helpers/index";
 import DeleteButton from "../../../components/DeleteButton";
 import { DeleteTeacherApi } from "../../../api/teacher";
+import { DeleteYearApi } from "../../../api/year";
 const TableYear = ({ data, loading , onDeleteSuccess }) => {
   return (
     <div className=" mt-5">
@@ -13,6 +14,7 @@ const TableYear = ({ data, loading , onDeleteSuccess }) => {
         <thead>
           <tr className=" bg-blue-500 text-white font-bold  text-sm">
             <th className="py-2">ລະຫັດສົກຮຽນ</th>
+            <th>ປີຮຽນ</th>
             <th>ສົກຮຽນ</th>
             <th>ເວລາສ້າງ</th>
             <th>ເວລາອັບເດດ</th>
@@ -29,6 +31,7 @@ const TableYear = ({ data, loading , onDeleteSuccess }) => {
                   {/* <img src={sousaka} width={25} className="rounded-full"></img> */}
                   {item.yearNumber}
                 </td>
+                <td className="text-center py-2">{item.schoolyear}</td>
                 <td className="text-center">{timeFormatter(item.createdAt)}</td>
                 <td className="text-center">{timeFormatter(item.updatedAt)}</td>
                 <td className="text-center">
@@ -37,7 +40,7 @@ const TableYear = ({ data, loading , onDeleteSuccess }) => {
                   </NavLink>
                 </td>
                 <td className="text-center">
-                <DeleteButton id={item.yUuid} onSuccess={onDeleteSuccess} deleteApi={DeleteTeacherApi}/>
+                <DeleteButton id={item.yUuid} onSuccess={onDeleteSuccess} deleteApi={DeleteYearApi}/>
                 </td>
               </tr>
             ))}

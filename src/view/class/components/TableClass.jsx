@@ -1,10 +1,12 @@
 import React from "react";
 import sousaka from "../../../assets/sousaka.jpeg";
-import { ModeOutlined } from "@mui/icons-material";
+import { ArrowRight, ModeOutlined } from "@mui/icons-material";
 import IconDelete from "../../../assets/icon/delete.svg";
 import { NavLink } from "react-router-dom";
-import { timeFormatter } from "../../helpers";
-const TableClassRoom = ({data, loading}) => {
+import { timeFormatter } from "../../../helpers";
+import { DeleteClassApi } from "../../../api/class";
+import DeleteButton from "../../../components/DeleteButton";
+const TableClass = ({data, loading, onDeleteSuccess}) => {
   return (
     <div className=" mt-5">
       <table className="w-full  ">
@@ -15,8 +17,10 @@ const TableClassRoom = ({data, loading}) => {
             <th>ສາຂາ</th>
             <th>schoolYear</th>
             <th>ປີຫ້ອງ</th>
+            <th>ເທີມທີ</th>
             <th>ວັນສ້າງ</th>
             <th>ອັບເດດລ່າສຸດ</th>
+            <th></th>
             <th></th>
             <th></th>
           </tr>
@@ -32,19 +36,24 @@ const TableClassRoom = ({data, loading}) => {
               {item.cName}
             </td>
             <td className="text-center">{item.mName}</td>
-            <td className="text-center">{item.schoolYear}</td>
+            <td className="text-center">{item.schoolyear}</td>
 
             <td className="text-center">{item.yearNumber}</td>
+            <td className="text-center">{item.termNo}</td>
             <td className="text-center">{timeFormatter(item.createdAt)}</td>
             <td className="text-center">{timeFormatter(item.updatedAt)}</td>
             <td className="text-center">
-              <NavLink to="/add_class_room">
+              <NavLink to={`/class/edit/${item.cUuid}`}>
                 <ModeOutlined />
               </NavLink>
             </td>
             <td className="text-center">
-              <NavLink to="/student">
-                <img src={IconDelete}></img>
+              <DeleteButton id={item.cUuid} onSuccess={onDeleteSuccess} deleteApi={DeleteClassApi}/>
+            </td>
+            <td className="text-center flex justify-center items-center gap-2">
+              <NavLink to={`/classDetail/${item.cUuid}`} className="rounded-md px-4 py-1 bg-gray-500 text-white flex justify-center items-center gap-2 hover:opacity-80">
+                <p>ລາຍລະອຽດຫ້ອງ</p>
+                <ArrowRight />
               </NavLink>
             </td>
           </tr>
@@ -57,4 +66,4 @@ const TableClassRoom = ({data, loading}) => {
   );
 };
 
-export default TableClassRoom;
+export default TableClass;

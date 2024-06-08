@@ -37,7 +37,7 @@ export const GetOneClassApi = async (id) => {
     },
   };
   try {
-    const response = await axios.get(`${ApiPath.getOneClass}${id}`, config);    
+    const response = await axios.get(`${ApiPath.getOneClass}${id}`, config);
     if (response.data.success === true) {
       return response?.data?.data;
     } else {
@@ -59,11 +59,10 @@ export const AddClassApi = async (data) => {
     },
   };
   const mappingData = {
-    cID: data?.cID || "",
     cName: data?.cName || "",
-    mName: data?.mName || "",
-    schoolyear: data?.schoolyear || "",
-    yearNumber: data?.yearNumber || "",
+    termNo: data?.termNo || "",
+    year_id: data?.year_id || "",
+    major_id: data?.major_id || "",
   }
   try {
     const response = await axios.post(ApiPath.addClass, mappingData, config);
@@ -91,11 +90,10 @@ export const UpdateClassApi = async (id, data) => {
     },
   };
   const mappingData = {
-    cID: data?.cID || "",
     cName: data?.cName || "",
-    mName: data?.mName || "",
-    schoolyear: data?.schoolyear || "",
-    yearNumber: data?.yearNumber || "",
+    termNo: data?.termNo || "",
+    year_id: data?.year_id || "",
+    major_id: data?.major_id || "",
   }
   try {
     const response = await axios.put(`${ApiPath.updateClass}${id}`, mappingData, config);

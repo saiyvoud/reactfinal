@@ -30,7 +30,7 @@ const TableStudent = ({ data, loading, onDeleteSuccess }) => {
                 <td className="text-center py-2">{item.sID}</td>
                 <td className="flex items-center py-2 gap-2 justify-center">
                   {/* <img src={sousaka} width={25} className="rounded-full"></img> */}
-                  {item.sName} {item.sSurName}
+                  {item.sName} {item.sSurname}
                 </td>
                 <td className="text-center">{item.gender}</td>
                 <td className="text-center">{(item.birthday).split(" ")[0]}</td>

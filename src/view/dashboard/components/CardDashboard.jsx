@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaUser,
   FaChartBar,
@@ -6,12 +6,61 @@ import {
   FaBook,
   FaWpexplorer,
 } from "react-icons/fa";
+import { GetAllUserApi } from "../../../api/user";
+import { GetAllClassApi } from "../../../api/class";
+import { GetAllStudentApi } from "../../../api/student";
+import { GetAllTeacherApi } from "../../../api/teacher";
+import { GetAllMajorApi } from "../../../api/major";
+import Loading from "../../../components/Loading";
 const CardDashboard = () => {
+
+  const [loading , setLoading] = useState(false);
+  const [user, setUser] = useState([]);
+  const [student, setStudent] = useState([]);
+  const [teacher, setTeacher] = useState([]);
+  const [major, setMajor] = useState([]);
+  const [classRoom, setClassRoom] = useState([]);
+
+  const autoFetchingData = async (fetchDataApi, setFetchData, label) => {
+      const response = await fetchDataApi();
+      if (!response) {
+        Swal.fire({
+          title: "ຜິດພາດ",
+          text: `ບໍ່ສາມາດດິງຂໍ້ມູນ${label}ໄດ້ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ`,
+          icon: "error",
+        });
+        //navigate("/login");
+        return;
+      }
+      console.log(`${label} getAll data::=>`);
+      console.log(response);
+      setFetchData(response);
+  }
+
+
+  
+  const fetchData = async () => {
+      setLoading(true);
+      await Promise.all([
+        autoFetchingData(GetAllUserApi, setUser, "ຜູ້ໃຊ້"),
+        autoFetchingData(GetAllStudentApi, setStudent, "ນັກຮຽນ"),
+        autoFetchingData(GetAllTeacherApi, setTeacher, "ອາຈານ"),
+        autoFetchingData(GetAllMajorApi, setMajor, "ສາຂາ"),
+        autoFetchingData(GetAllClassApi, setClassRoom, "ຫ້ອງ"),
+      ])
+      setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
   const data = [
     {
       title: "ຜູ້ໃຊ້ທັງໝົດ",
       icon: <FaChartBar />,
-      qty: 150,
+      qty: user.length,
       backgroud:
         "flex w-full justify-start  gap-4 items-center px-4 border-r-4 border-cyan-500 ",
       color: "bg-cyan-500 text-white p-4 rounded-full",
@@ -19,7 +68,7 @@ const CardDashboard = () => {
     {
       title: "ນັກຮຽນ",
       icon: <FaUser />,
-      qty: 110,
+      qty: student.length,
       backgroud:
         "flex w-full justify-start  gap-4 items-center px-4 border-r-4 border-green-400 ",
       color: "bg-green-400 text-white p-4 rounded-full",
@@ -27,23 +76,23 @@ const CardDashboard = () => {
     {
       title: "ອາຈານ",
       icon: <FaChalkboardTeacher />,
-      qty: 28,
+      qty: teacher.length,
       backgroud:
         "flex w-full justify-start  gap-4 items-center px-4 border-r-4 border-amber-500 ",
       color: "bg-amber-500 text-white p-4 rounded-full",
     },
     {
-      title: "ຜູ້ຊ່ຽວຊານ",
+      title: "ສາຂາ",
       icon: <FaWpexplorer />,
-      qty: 10,
+      qty: major.length,
       backgroud:
         "flex w-full justify-start  gap-4 items-center px-4 border-r-4 border-red-400 ",
       color: "bg-red-400 text-white p-4 rounded-full",
     },
     {
-      title: "ຜູ້ອຳນວຍການ",
+      title: "ຫ້ອງ",
       icon: <FaBook />,
-      qty: 2,
+      qty: classRoom.length,
       backgroud:
         "flex w-full justify-start  gap-4 items-center px-4 border-r-4 border-purple-400 ",
       color: "bg-purple-400 text-white p-4 rounded-full",
@@ -59,7 +108,7 @@ const CardDashboard = () => {
           <div className={items.backgroud}>
             <div className={items.color}>{items.icon}</div>
             <div>
-              <p>{items.qty}</p>
+              <span>{items.qty || <Loading show={true} className="opacity-50" />}</span>
               <p className="text-[12px] text-gray-600">{items.title}</p>
             </div>
           </div>

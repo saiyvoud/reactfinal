@@ -59,6 +59,7 @@ export const AddYearApi = async (data) => {
   };
   const mappingData = {
     yearNumber: data?.yearNumber || "",
+    schoolyear: data?.schoolyear || "",
   }
   try {
     const response = await axios.post(ApiPath.addYear, mappingData, config);
@@ -87,6 +88,7 @@ export const UpdateYearApi = async (id, data) => {
   };
   const mappingData = {
     yearNumber: data?.yearNumber || "",
+    schoolyear: data?.schoolyear || "",
   }
   try {
     const response = await axios.put(`${ApiPath.updateYear}${id}`, mappingData, config);

@@ -30,28 +30,29 @@ export const GetAllUserApi = async () => {
 
 
 
-// no route for get one
+export const GetOneUserApi = async (id) => {
+  const data = {
+    id: id
+  }
+  try {
+    const response = await axios.get(ApiPath.getOneUser, {
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer '+ token()
+      },
+      data: data
+    });    
+    if (response.data.success === true) {
+      return response?.data?.data;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
 
-// export const GetOneUserApi = async (id) => {
-//   const config = {
-//     headers: {
-//       "Content-Type": "application/json",
-//       'Authorization': 'Bearer '+ token()
-//     },
-//   };
-//   try {
-//     const response = await axios.get(`${ApiPath.getOneStudent}${id}`, config);    
-//     if (response.data.success === true) {
-//       return response?.data?.data;
-//     } else {
-//       return false;
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     return false;
-//   }
-
-// }
+}
 
 
 export const AddUserApi = async (data) => {
@@ -62,8 +63,6 @@ export const AddUserApi = async (data) => {
     },
   };
   const mappingData = {
-    uId: data?.uId || "",
-    profile: data?.profile || "",
     role: data?.role || "",
     email: data?.email || "",
     password: data?.password || "",
@@ -94,7 +93,6 @@ export const UpdateUserApi = async (id, data) => {
     },
   };
   const mappingData = {
-    uId: data?.uId || "",
     profile: data?.profile || "",
     role: data?.role || "",
     email: data?.email || "",
@@ -129,7 +127,7 @@ export const DeleteUserApi = async (id) => {
   try {
     const response = await axios.delete(`${ApiPath.deleteUser}${id}`, config);
 
-    console.log("response of fuc delteStudent ::=>");
+    console.log("response of fuc delteUser ::=>");
     console.log(response);
     
     if (response.data.success === true) {

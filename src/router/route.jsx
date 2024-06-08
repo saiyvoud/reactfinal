@@ -10,7 +10,7 @@ import Dashboard from "../view/dashboard/Dashboard";
 import Student from "../view/student/Student";
 import AddTeacher from "../view/teacher/components/AddTeacher";
 import Teacher from "../view/teacher/Teacher";
-import ClassRoom from "../view/class/ClassRoom";
+import Class from "../view/class/Class";
 import Year from "../view/year/Year";
 import { Major } from "../view/major/Major";
 import Part from "../view/part/Part";
@@ -34,6 +34,17 @@ import AddPart from "../view/part/components/AddPart";
 import AddSubject from "../view/subject/components/AddSubject";
 import EditSubject from "../view/subject/components/EditSubject";
 import EditPart from "../view/part/components/EditPart";
+import AddAccessRight from "../view/accessRight/components/AddAccessRight";
+import EditAccessRight from "../view/accessRight/components/EditAccessRight";
+import AddMajor from "../view/major/components/AddMajor";
+import EditMajor from "../view/major/components/EditMajor";
+import AddClass from "../view/class/components/AddClass";
+import EditClass from "../view/class/components/EditClass";
+import ClassDetail from "../view/classDetail/ClassDetail";
+import AddClassDetail from "../view/classDetail/components/AddClassDetail";
+import EditClassDetail from "../view/classDetail/components/EditClassDetail";
+import NewCheckList from "../view/checklist/components/NewChecklist";
+import ChecklistHistory from "../view/checklist/components/ChecklistHistory";
 const RouterPath = () => {
   const router = createBrowserRouter([
     {
@@ -109,10 +120,50 @@ const RouterPath = () => {
       ),
     },
     {
-      path: "/class_room",
+      path: "/class",
       element: (
         <Authentication>
-          <ClassRoom />
+          <Class />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/class/add",
+      element: (
+        <Authentication>
+          <AddClass />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/class/edit/:id",
+      element: (
+        <Authentication>
+          <EditClass />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/classDetail/:id",
+      element: (
+        <Authentication>
+          <ClassDetail />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/classDetail/:id/add",
+      element: (
+        <Authentication>
+          <AddClassDetail />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/classDetail/:id/edit/:cdUuid",
+      element: (
+        <Authentication>
+          <EditClassDetail />
         </Authentication>
       ),
     },
@@ -145,6 +196,22 @@ const RouterPath = () => {
       element: (
         <Authentication>
           <Major />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/major/add",
+      element: (
+        <Authentication>
+          <AddMajor />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/major/edit/:id",
+      element: (
+        <Authentication>
+          <EditMajor />
         </Authentication>
       ),
     },
@@ -221,10 +288,26 @@ const RouterPath = () => {
       ),
     },
     {
-      path: "/access_right",
+      path: "/accessRight",
       element: (
         <Authentication>
           <AccessRight />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/accessRight/add",
+      element: (
+        <Authentication>
+          <AddAccessRight />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/accessRight/edit/:id",
+      element: (
+        <Authentication>
+          <EditAccessRight />
         </Authentication>
       ),
     },
@@ -233,6 +316,22 @@ const RouterPath = () => {
       element: (
         <Authentication>
           <Checklist />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/checklist/newChecklist/:id",
+      element: (
+        <Authentication>
+          <NewCheckList />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/checklist/newChecklist/:mUuid/checklistHistory/:cUuid",
+      element: (
+        <Authentication>
+          <ChecklistHistory />
         </Authentication>
       ),
     },

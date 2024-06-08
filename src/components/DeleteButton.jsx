@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const DeleteButton = ({id = "", onSuccess = () => {}, deleteApi = async (id) => {}}) => {
 
 
-    const deleteStudent = async () => {
+    const deleteData = async () => {
         const response = await deleteApi(id);
         if(!response){
             Swal.fire({
@@ -37,7 +37,7 @@ const DeleteButton = ({id = "", onSuccess = () => {}, deleteApi = async (id) => 
             cancelButtonText: "ຍົກເລີກ",
             reverseButtons: true,
             preConfirm: async () => {
-              return await deleteStudent();
+              return await deleteData();
             },
           })
     }

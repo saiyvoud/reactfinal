@@ -16,27 +16,28 @@ function AccessRight() {
     const [loading, setLoading] = useState(false);
     const [initDataForSearch, setInitDataForSearch] = useState([]);
     const [data, setData] = useState([]);
+
+    const fetchData = async () => {
+      setLoading(true);
+      const response = await GetAllUserApi();
+      if(!response){
+        Swal.fire({
+          title: "ຜິດພາດ",
+          text: "ບໍ່ສາມາດດິງຂໍ້ມູນຜູ້ໃຊ້ໄດ້ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ",
+          icon: "error",
+        });
+        setLoading(false);
+        //navigate("/login");
+        return;
+      }
+      console.log("user data::=>");
+      console.log(response);
+      setData(response)
+      setInitDataForSearch(response)
+      setLoading(false);
+    }
   
     useEffect(() => {
-      const fetchData = async () => {
-        setLoading(true);
-        const response = await GetAllUserApi();
-        if(!response){
-          Swal.fire({
-            title: "ຜິດພາດ",
-            text: "ບໍ່ສາມາດດິງຂໍ້ມູນຜູ້ໃຊ້ໄດ້ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ",
-            icon: "error",
-          });
-          setLoading(false);
-          //navigate("/login");
-          return;
-        }
-        console.log("user data::=>");
-        console.log(response);
-        setData(response)
-        setInitDataForSearch(response)
-        setLoading(false);
-      }
   
       fetchData();
     }, [])
@@ -50,7 +51,7 @@ function AccessRight() {
                     <h1>ຄົນທີ່ມີສິດໃນການເຂົ້າເຖິງເວັບແອດມິນ</h1>
                     <div>
                         <button
-                            onClick={() => (window.location.href = "/addMajor")}
+                            onClick={() => navigate("/accessRight/add")}
                             className="bg-blue-400 text-white font-bold border shadow-sm rounded-lg p-2"
                         >
                             ເພີ່ມສິດຜູ້ໃຊ້
@@ -59,7 +60,7 @@ function AccessRight() {
                 </div>
                 <SearchBar placeholder={"ຄົ້ນຫາສິດຜູ້ເຂົ້າໃຊ້..."} data={initDataForSearch} onSearch={(result) => setData(result)} />
                 <div className="mt-8"></div>
-                <AccessList data={data} loading={loading}/>
+                <AccessList data={data} loading={loading} onDeleteSuccess={fetchData}/>
                 <Loading show={loading} className="mt-4" />
                 <Empty show={data.length == 0 && !loading} />
             </div>

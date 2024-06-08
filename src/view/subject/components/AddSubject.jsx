@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../../components/Sidebar";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import validationSchema from "../../service/validation";
+import validationSchema from "../../../service/validation";
 import { AddStudentApi } from "../../../api/student";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -55,7 +55,7 @@ const AddSubject = () => {
      >
          {({ errors, touched, isSubmitting }) => (
          <Form>
-            <h2 className="text-xl font-semibold mt-8">ເພີ່ມອາຈານ</h2>
+            <h2 className="text-xl font-semibold mt-8">ເພີ່ມວິຊາ</h2>
             {/* subName */}
             <p className=" mb-1 mt-8">ຊື່ວິຊາ <span className="text-red-500">*</span></p>
            <Field disabled={isSubmitting} name="subName" placeholder="ຊື່ວິຊາ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />

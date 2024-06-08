@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../../components/Sidebar";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import validationSchema from "../../service/validation";
+import validationSchema from "../../../service/validation";
 import { AddStudentApi, GetOneStudentApi, UpdateStudentApi } from "../../../api/student";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
@@ -62,8 +62,7 @@ const EditStudent = () => {
          // same shape as initial values
          console.log(values);
 
-         const sUuid = data?.sUuid || '';
-        const response = await UpdateStudentApi(sUuid, values);
+        const response = await UpdateStudentApi(id, values);
         if(!response){
             Swal.fire({
                 title: "ຜິດພາດ",
@@ -127,7 +126,7 @@ const EditStudent = () => {
            <ErrorMessage name="tel" component="div" className="text-red-500"/>
            {/* sID */}
            <p className=" mb-1 mt-8">ລະຫັດນັກສຶກສາ <span className="text-red-500">*</span></p>
-           <Field disabled={isSubmitting || loading} name="sID" placeholder="ລະຫັດນັກສຶກສາ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
+           <Field disabled={true} name="sID" placeholder="ລະຫັດນັກສຶກສາ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
            <ErrorMessage name="sID" component="div" className="text-red-500"/>
 
            <div className="w-full h-20 flex justify-center items-center gap-4 mt-20 mb-20">

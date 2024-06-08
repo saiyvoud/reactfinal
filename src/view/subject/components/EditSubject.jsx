@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../../components/Sidebar";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import validationSchema from "../../service/validation";
+import validationSchema from "../../../service/validation";
 import { AddStudentApi } from "../../../api/student";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
@@ -38,7 +38,7 @@ const EditSubject = () => {
           return;
         }
         setLoading(false);
-        console.log("teacher getOne data::=>");
+        console.log("subject getOne data::=>");
         console.log(response);
         setData(response);
       }
@@ -84,7 +84,7 @@ const EditSubject = () => {
      >
          {({ errors, touched, isSubmitting }) => (
          <Form>
-            <h2 className="text-xl font-semibold mt-8">ແກ້ໄຂອາຈານ</h2>
+            <h2 className="text-xl font-semibold mt-8">ແກ້ໄຂວິຊາ</h2>
             {/* subName */}
             <p className=" mb-1 mt-8">ຊື່ວິຊາ <span className="text-red-500">*</span></p>
            <Field disabled={isSubmitting || loading} name="subName" placeholder="ຊື່ວິຊາ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />

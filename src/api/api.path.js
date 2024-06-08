@@ -11,8 +11,8 @@ export default class ApiPath {
   static updateUser = `${baseUrl}/user/update`;
   static updateProfileImage = `${baseUrl}/user/updateprofileimage`;
   static refreshToken = `${baseUrl}/user/refresh`;
-  static deleteUser = `${baseUrl}/user/delete`;
-  static userInfo = `${baseUrl}/user/info`;
+  static deleteUser = `${baseUrl}/user/delete/`;
+  static getOneUser = `${baseUrl}/user/info`;
   static getAllUser = `${baseUrl}/user/selectall`;
 
   // ---- student ----
@@ -55,6 +55,7 @@ export default class ApiPath {
   // ---- checklist ----
   static getAllChecklist = `${baseUrl}/checklist/selectall`;
   static getOneChecklist = `${baseUrl}/checklist/selectone/`;
+  static getByClassDetailIdChecklist = `${baseUrl}/checklist/selectbyclassdetail/`;
   static addChecklist = `${baseUrl}/checklist/insert`;
   static updateChecklist = `${baseUrl}/checklist/update/`;
   static deleteChecklist = `${baseUrl}/checklist/delete/`;
@@ -77,6 +78,7 @@ export default class ApiPath {
   static getAllClassDetail = `${baseUrl}/classdetail/selectall`;
   static getOneClassDetail = `${baseUrl}/classdetail/selectone/`;
   static getByClassIdClassDetail = `${baseUrl}/classdetail/selectbyclassid/`;
+  static getByFilterClassDetail = `${baseUrl}/classdetail/selectbyfilter/`;
   static addClassDetail = `${baseUrl}/classdetail/insert`;
   static updateClassDetail = `${baseUrl}/classdetail/update/`;
   static deleteClassDetail = `${baseUrl}/classdetail/delete/`;

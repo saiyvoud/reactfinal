@@ -44,7 +44,7 @@ function DropdownSide() {
         {
             title: "ຫ້ອງ",
             icon: <FaSchool />,
-            path: "/class_room",
+            path: "/class",
         },
         {
             title: "ຕາຕະລາງ",

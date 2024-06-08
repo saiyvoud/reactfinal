@@ -25,6 +25,7 @@ const teacher = Yup.object().shape({
 
 const year = Yup.object().shape({
     yearNumber: Yup.string().matches(/^\d+$/, 'ກະລຸນາປ້ອນຕົວເລກຖືກຕ້ອງ').required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    schoolyear: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
 });
 
 const part = Yup.object().shape({
@@ -37,12 +38,41 @@ const subject = Yup.object().shape({
     tUuid: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
 });
 
+const user = Yup.object().shape({
+    profile: Yup.string().required('ກະລຸນາອັບໂຫຼດຮູບພາບ'),
+    role: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    email: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    password: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+})
+
+const major = Yup.object().shape({
+    mName: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+})
+
+const classRoom = Yup.object().shape({
+    cName: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    termNo: Yup.string().matches(/^\d+$/, 'ກະລຸນາປ້ອນຕົວເລກຖືກຕ້ອງ').required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    year_id: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    major_id: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+})
+
+const classDetail = Yup.object().shape({
+    class_id: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    student_id: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    part_id: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    subject_id: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+})
+
 const validationSchema = {
     student,
     teacher,
     year,
     part,
-    subject
+    subject,
+    user,
+    major,
+    classRoom,
+    classDetail
 };
 
 export default validationSchema;

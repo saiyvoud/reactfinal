@@ -15,25 +15,26 @@ export const Major = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const response = await GetAllMajorApi();
-      if(!response){
-        Swal.fire({
-          title: "ຜິດພາດ",
-          text: "ບໍ່ສາມາດດິງຂໍ້ມູນສາຂາໄດ້ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ",
-          icon: "error",
-        });
-        setLoading(false);
-        //navigate("/login");
-        return;
-      }
-      console.log("major data::=>");
-      console.log(response);
-      setData(response)
+  const fetchData = async () => {
+    setLoading(true);
+    const response = await GetAllMajorApi();
+    if(!response){
+      Swal.fire({
+        title: "ຜິດພາດ",
+        text: "ບໍ່ສາມາດດິງຂໍ້ມູນສາຂາໄດ້ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ",
+        icon: "error",
+      });
       setLoading(false);
+      //navigate("/login");
+      return;
     }
+    console.log("major data::=>");
+    console.log(response);
+    setData(response)
+    setLoading(false);
+  }
+
+  useEffect(() => {
 
     fetchData();
   }, [])
@@ -46,14 +47,14 @@ export const Major = () => {
         <h1>Majors</h1>
         <div>
           <button
-            onClick={() => (window.location.href = "/addMajor")}
+            onClick={() => navigate("/major/add")}
             className="bg-blue-400 text-white font-bold border shadow-sm rounded-lg p-2"
           >
             ເພີ່ມສາຂາ
           </button>
         </div>
       </div>
-      <CardMajor data={data} />
+      <CardMajor data={data} onDeleteSuccess={fetchData} />
       <Loading show={loading} className="mt-4" />
       <Empty show={data.length == 0 && !loading} />
 
