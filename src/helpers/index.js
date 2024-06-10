@@ -5,6 +5,14 @@ export function timeFormatter (value) {
     return value.match(/^\d{4}-\d{2}-\d{2}/)[0];
 }
 
+export function setMaxText (text, length) {
+  if(text.length > length) {
+    return text.slice(0, length) + "...";
+  } else {
+    return text;
+  }
+}
+
 
 export async function autoFetchingData (fetchDataApi, setFetchData, label) {
     const response = await fetchDataApi();
@@ -20,4 +28,10 @@ export async function autoFetchingData (fetchDataApi, setFetchData, label) {
     console.log(`${label} getAll data::=>`);
     console.log(response);
     setFetchData(response);
+}
+
+export function getCurrentDate () {
+    const date = new Date();
+    const currentDate = date.getFullYear() + "-" + (date.getMonth() + 1 + "").padStart(2, "0") + "-" + ((date.getDate()) + "").padStart(2, "0");
+    return currentDate;
 }

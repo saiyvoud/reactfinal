@@ -74,15 +74,23 @@ export const GetAllClassDetailByClassIdApi = async (id) => {
   }
 
 
-  export const GetAllClassDetailByFilter = async (cUuid, mUuid) => {
+  export const GetAllClassDetailByFilter = async (data) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
         'Authorization': 'Bearer '+ token()
       },
     };
+
+    const mappingData = {
+      mUuid: data?.mUuid || "",
+      cUuid: data?.cUuid || "",
+      subUuid: data?.subUuid || "",
+      pUuid: data?.pUuid || "",
+    }
+
     try {
-      const response = await axios.get(`${ApiPath.getByFilterClassDetail}${cUuid}/${mUuid}`, config);
+      const response = await axios.post(`${ApiPath.getByFilterClassDetail}`, mappingData, config);
       if (response.data.success === true) {
         return response?.data?.data;
       } else {

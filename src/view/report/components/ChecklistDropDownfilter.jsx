@@ -9,8 +9,7 @@ import { GetAllMajorApi } from '../../../api/major';
 import { GetAllPartApi } from '../../../api/part';
 import Loading from '../../../components/Loading';
 
-const ChecklistDropDownfilter = ({onFinishedSelectDropDown}) => {
-
+const ReportDropDownfilter = ({onFinishedSelectDropDown}) => {
     const navigate = useNavigate();
     const [loading , setLoading] = useState(false);
     const [major, setMajor] = useState([]);
@@ -108,4 +107,4 @@ const ChecklistDropDownfilter = ({onFinishedSelectDropDown}) => {
   )
 }
 
-export default ChecklistDropDownfilter
+export default ReportDropDownfilter

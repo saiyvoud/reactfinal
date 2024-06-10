@@ -69,6 +69,27 @@ export const GetAllChecklistByClassDetailApi = async (id) => {
 
 }
 
+export const GetAllChecklistByClassDetailIdAndDateApi = async (cdUuid, date) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer '+ token()
+    },
+  };
+  try {
+    const response = await axios.get(`${ApiPath.getByClassDetailIdAndDateChecklist}${cdUuid}/${date}`, config);
+    if (response.data.success === true) {
+      return response?.data?.data;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+
+}
+
 
 
 export const AddChecklistApi = async (data) => {
@@ -105,8 +126,38 @@ export const AddChecklistApi = async (data) => {
 
 }
 
+export const AddManyChecklistApi = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer '+ token()
+    },
+  };
+  console.log("data of AddManyChecklistApi before inserting::=>");
+  console.log(data);
+  const mappingData = {
+    checklists: data
+  };
+  try {
+    const response = await axios.post(ApiPath.addManyChecklist, mappingData, config);
 
-export const UpdateTeacherApi = async (id, data) => {
+    console.log("response of fuc addChecklist ::=>");
+    console.log(response);
+    
+    if (response.data.success === true) {
+      return response;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+
+}
+
+
+export const UpdateChecklistApi = async (chUuid, data) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -114,18 +165,13 @@ export const UpdateTeacherApi = async (id, data) => {
     },
   };
   const mappingData = {
-    tName: data?.tName || "",
-    tSurname: data?.tSurname || "",
-    tType: data?.tType || "",
-    age: data?.age || "",
-    gender: data?.gender || "",
-    tel: data?.tel || "",
-    tID: data?.tID || "",
+    status: data?.status || 0,
+    reson: data?.reson || "",
   };
   try {
-    const response = await axios.put(`${ApiPath.updateTeacher}${id}`, mappingData, config);
+    const response = await axios.put(`${ApiPath.updateChecklist}${chUuid}`, mappingData, config);
 
-    console.log("response of fuc updateTeacher ::=>");
+    console.log("response of fuc updateChecklist ::=>");
     console.log(response);
     
     if (response.data.success === true) {

@@ -15,7 +15,7 @@ import Year from "../view/year/Year";
 import { Major } from "../view/major/Major";
 import Part from "../view/part/Part";
 import Subject from "../view/subject/Subject";
-import Checklist from "../view/checklist/Checklist";
+import Checklist from "../view/checklistStudent/Checklist";
 import Report from "../view/report/Report";
 import Register from "../view/auth/Register";
 import Login from "../view/auth/Login";
@@ -44,7 +44,8 @@ import ClassDetail from "../view/classDetail/ClassDetail";
 import AddClassDetail from "../view/classDetail/components/AddClassDetail";
 import EditClassDetail from "../view/classDetail/components/EditClassDetail";
 import NewCheckList from "../view/checklist/components/NewChecklist";
-import ChecklistHistory from "../view/checklist/components/ChecklistHistory";
+import ChecklistHistory from "../view/checklistHistory/ChecklistHistory";
+import StudentReport from "../view/report/components/StudentReport";
 const RouterPath = () => {
   const router = createBrowserRouter([
     {
@@ -319,16 +320,16 @@ const RouterPath = () => {
         </Authentication>
       ),
     },
+    // {
+    //   path: "/checklist/newChecklist/:id",
+    //   element: (
+    //     <Authentication>
+    //       <NewCheckList />
+    //     </Authentication>
+    //   ),
+    // },
     {
-      path: "/checklist/newChecklist/:id",
-      element: (
-        <Authentication>
-          <NewCheckList />
-        </Authentication>
-      ),
-    },
-    {
-      path: "/checklist/newChecklist/:mUuid/checklistHistory/:cUuid",
+      path: "/checklistHistory/:mUuid/:cUuid/:subUuid/:pUuid",
       element: (
         <Authentication>
           <ChecklistHistory />
@@ -340,6 +341,14 @@ const RouterPath = () => {
       element: (
         <Authentication>
           <Report />
+        </Authentication>
+      ),
+    },
+    {
+      path: "/report/studentReport",
+      element: (
+        <Authentication>
+          <StudentReport />
         </Authentication>
       ),
     },

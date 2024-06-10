@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Search } from "@mui/icons-material";
-import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
-import NewChecklistTable from "./NewChecklistTable";
-import { GetAllTeacherApi } from "../../../api/teacher";
-import SearchBar from "../../../components/SearchBar";
-import Empty from "../../../components/Empty";
-import Loading from "../../../components/Loading";
-import ExportButton from "../../../components/ExportButton";
-import Sidebar from "../../../components/Sidebar";
-import NewChecklistDropDownfilter from "./NewChecklistDropDownfilter";
-import { GetAllClassDetailByFilter } from "../../../api/classDetail";
-import ChecklistHistoryTable from "./ChecklistHistoryTable";
+import Swal from "sweetalert2";
+import { GetAllClassDetailByFilter } from "../../api/classDetail";
+import Sidebar from "../../components/Sidebar";
+import Loading from "../../components/Loading";
+import Empty from "../../components/Empty";
+import ChecklistHistoryTable from "./components/ChecklistHistoryTable";
 
 const ChecklistHistory = () => {
 

@@ -56,7 +56,9 @@ export default class ApiPath {
   static getAllChecklist = `${baseUrl}/checklist/selectall`;
   static getOneChecklist = `${baseUrl}/checklist/selectone/`;
   static getByClassDetailIdChecklist = `${baseUrl}/checklist/selectbyclassdetail/`;
+  static getByClassDetailIdAndDateChecklist = `${baseUrl}/checklist/selectbyclassdetailanddate/`;
   static addChecklist = `${baseUrl}/checklist/insert`;
+  static addManyChecklist = `${baseUrl}/checklist/multiinsert`;
   static updateChecklist = `${baseUrl}/checklist/update/`;
   static deleteChecklist = `${baseUrl}/checklist/delete/`;
 
@@ -78,7 +80,7 @@ export default class ApiPath {
   static getAllClassDetail = `${baseUrl}/classdetail/selectall`;
   static getOneClassDetail = `${baseUrl}/classdetail/selectone/`;
   static getByClassIdClassDetail = `${baseUrl}/classdetail/selectbyclassid/`;
-  static getByFilterClassDetail = `${baseUrl}/classdetail/selectbyfilter/`;
+  static getByFilterClassDetail = `${baseUrl}/classdetail/selectbyfilter`;
   static addClassDetail = `${baseUrl}/classdetail/insert`;
   static updateClassDetail = `${baseUrl}/classdetail/update/`;
   static deleteClassDetail = `${baseUrl}/classdetail/delete/`;
