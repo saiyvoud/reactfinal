@@ -1,7 +1,7 @@
 export const Role = {
     student: "student",
     teacher: "teacher",
-    expert: "expert",
-    director: "director",
     admin: "admin",
   };
+
+export const SECREAT_KEY = "secretKeyOnly";

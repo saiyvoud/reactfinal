@@ -8,12 +8,15 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../../components/Loading";
 import UploadFile from "../../../components/UploadFile";
 import { AddUserApi } from "../../../api/user";
+import { Role } from "../../../constant";
 
 
 
 const AddAccessRight = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+
+    const { admin, teacher, student } = Role;
 
 
   return (
@@ -22,7 +25,6 @@ const AddAccessRight = () => {
         <div className="max-w-screen-xl mx-auto">
         <Formik
        initialValues={{
-        profile: "",
         role: "student",
         email: "southixa.pele@gmail.com",
         password: "1234",
@@ -32,14 +34,23 @@ const AddAccessRight = () => {
          // same shape as initial values
          console.log(values);
 
-        // TODO [ backend can't upload image and role]
-        Swal.fire({
-            title: "ລຳຖ້າ",
-            text: "ຢູ່ໃນການພັດທະນາ... 👷‍♂️⚒",
-            icon: "warning",
-          });
-
-
+         const response = await AddUserApi(values);
+         if(!response){
+             Swal.fire({
+                 title: "ຜິດພາດ",
+                 text: "ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ສາເຫດອາດເກີດຈາກ: ອີເມວຊຳ, ຂໍ້ຜິດພາດໃນການບັນທຶກຂໍ້ມູນ",
+                 icon: "error",
+               });
+             return;
+         }
+         Swal.fire({
+             title: "ສຳເລັດ",
+             text: "ເພີ່ມຂໍ້ມູນສຳເລັດ",
+             icon: "success",
+           });
+           navigate("/accessRight");
+ 
+         return;
 
         // navigate("/accessRight");
 
@@ -60,14 +71,15 @@ const AddAccessRight = () => {
            <p className=" mb-1 mt-8">ສິດເຂົ້າໃຊ້ <span className="text-red-500">*</span></p>
            <Field disabled={isSubmitting} name="role" as="select" placeholder="ສິດເຂົ້າໃຊ້..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >
            <option disabled value="">--ເລືອກສິດເຂົ້າໃຊ້--</option>
-            <option value="student">student</option>
-            <option value="admin">admin</option>
+            <option value={admin}>{admin}</option>
+            <option value={teacher}>{teacher}</option>
+            <option value={student}>{student}</option>
            </Field>
            <ErrorMessage name="role" component="div" className="text-red-500"/>
             {/* profile */}
-            <p className=" mb-2 mt-16">ຮູບໂປຟາຍ <span className="text-red-500">*</span></p>
-           <UploadFile className="py-2 px-3 w-full bg-slate-800 rounded-lg border border-gray-800" name="profile" accept="image/*" onUpload={(file) => setFieldValue("profile", file)} onRemove={(file) => setFieldValue("profile", "")}  />
-           <ErrorMessage name="profile" component="div" className="text-red-500"/>
+            {/* <p className=" mb-2 mt-16">ຮູບໂປຟາຍ <span className="text-red-500">*</span></p> */}
+           {/* <UploadFile className="py-2 px-3 w-full bg-slate-800 rounded-lg border border-gray-800" name="profile" accept="image/*" onUpload={(file) => setFieldValue("profile", file)} onRemove={(file) => setFieldValue("profile", "")}  /> */}
+           {/* <ErrorMessage name="profile" component="div" className="text-red-500"/> */}
 
            <div className="w-full h-20 flex justify-center items-center gap-4 mt-20 mb-20">
             <div onClick={() => navigate(-1)} disabled={isSubmitting} className="bg-gray-400 text-white font-bold border shadow-sm rounded-lg py-2 px-4 min-w-20 hover:cursor-pointer hover:opacity-80">ຍົກເລີກ</div>

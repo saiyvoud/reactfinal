@@ -97,13 +97,17 @@ const AddClass = () => {
            <ErrorMessage name="cName" component="div" className="text-red-500"/>
            {/* termNo */}
            <p className=" mb-1 mt-8">ເທີມທີ່ <span className="text-red-500">*</span></p>
-           <Field disabled={isSubmitting} name="termNo" placeholder="ເທີມທີ່..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
+           <Field disabled={isSubmitting || loading} name="termNo" as="select" placeholder="ເທີ່ມທີ່..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >
+            <option value="" disabled>--- ເລືອກເທີມ ---</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+           </Field>
            <ErrorMessage name="termNo" component="div" className="text-red-500"/>
            {/* year_id */}
            <p className=" mb-1 mt-8">ປີ <span className="text-red-500">*</span></p>
            <Field disabled={isSubmitting || loading} name="year_id" as="select" placeholder="ປີ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >
             <option value="" disabled>--- ເລືອກປີ ---</option>
-            {year.map((item, index) => <option key={index} value={item.yUuid}>{item.yearNumber}</option>)}
+            {year.map((item, index) => <option key={index} value={item.yUuid}>ປີ {item.yearNumber}  --({item.schoolyear})</option>)}
            </Field>
            <ErrorMessage name="year_id" component="div" className="text-red-500"/>
            {/* major_id */}

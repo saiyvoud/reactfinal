@@ -14,6 +14,7 @@ import { GetAllSubjectApi } from "../../../api/subject";
 import { AddClassApi, GetAllClassApi } from "../../../api/class";
 import { AddClassDetailApi } from "../../../api/classDetail";
 import { autoFetchingData } from "../../../helpers";
+import DropDownCheckBox from "../../../components/DropDownCheckBox";
 
 
 
@@ -60,6 +61,9 @@ const AddClassDetail = () => {
        onSubmit={ async (values) => {
          // same shape as initial values
          console.log(values);
+         
+
+         return;
 
         const response = await AddClassDetailApi(values);
         if(!response){
@@ -81,7 +85,7 @@ const AddClassDetail = () => {
 
        }}
      >
-         {({ errors, touched, isSubmitting }) => (
+         {({ errors, touched, isSubmitting, setFieldValue }) => (
          <Form>
             <h2 className="text-xl font-semibold mt-8">ເພີ່ມລາຍລະອຽດຫ້ອງ</h2>
            {/* class_id */}
@@ -93,11 +97,22 @@ const AddClassDetail = () => {
            <ErrorMessage name="class_id" component="div" className="text-red-500"/>
            {/* student_id */}
            <p className=" mb-1 mt-8">ນັກສຶກສາ <span className="text-red-500">*</span></p>
-           <Field disabled={isSubmitting || loading} name="student_id" as="select" placeholder="ນັກສຶກສາ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >
-            <option value="" disabled>--- ເລືອກນັກສຶກສາ ---</option>
-            {student.map((item, index) => <option key={index} value={item.sUuid}>{item.sName} {item.sSurname}</option>)}
-           </Field>
-           <ErrorMessage name="student_id" component="div" className="text-red-500"/>
+           <DropDownCheckBox data={student} options={{
+            key: "sUuid",
+            render: (item) => (
+              <p>{item?.sID} ({item?.sName} {item?.sSurname}, {item?.tel})</p>
+            )
+           }}
+           onChecklistChange={
+            (checked) => setFieldValue("student_id", checked.join(","))
+          }
+          placeholder="-- ເລືອກນັກສຶກສາ --"
+          disable={false}
+            />
+            <ErrorMessage name="student_id" component="div" className="text-red-500"/>
+
+
+
            {/* part_id */}
            <p className=" mb-1 mt-8">ພາກ <span className="text-red-500">*</span></p>
            <Field disabled={isSubmitting || loading} name="part_id" as="select" placeholder="ພາກ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >

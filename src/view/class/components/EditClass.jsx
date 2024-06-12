@@ -124,8 +124,12 @@ const EditClass = () => {
           <ErrorMessage name="cName" component="div" className="text-red-500"/>
           {/* termNo */}
           <p className=" mb-1 mt-8">ເທີມທີ່ <span className="text-red-500">*</span></p>
-          <Field disabled={true} name="termNo" placeholder="ເທີມທີ່..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
-          <ErrorMessage name="termNo" component="div" className="text-red-500"/>
+           <Field disabled={isSubmitting || loading} name="termNo" as="select" placeholder="ເທີ່ມທີ່..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >
+            <option value="" disabled>--- ເລືອກເທີມ ---</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+           </Field>
+           <ErrorMessage name="termNo" component="div" className="text-red-500"/>
           {/* year_id */}
           <p className=" mb-1 mt-8">ປີ <span className="text-red-500">*</span></p>
           <Field disabled={true} name="year_id" as="select" placeholder="ປີ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >

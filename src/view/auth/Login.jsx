@@ -4,6 +4,7 @@ import logo from "../../assets/sousaka.jpeg";
 import { LoginApi } from "../../api/auth";
 import Swal from "sweetalert2";
 import validator from "validator";
+import { Role } from "../../constant";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("test@gmail.com");
@@ -11,6 +12,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
+
+  const { admin , teacher, student } = Role;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +38,15 @@ const Login = () => {
       const response = await LoginApi(email, password);
 
       if (response) {
-        navigate("/");
+        if(response.role == admin){
+          navigate("/");
+        }
+        if(response.role == teacher){
+          navigate("/checklist");
+        }
+        if(response.role == student){
+          navigate("/report");
+        }
         Swal.fire({
           title: "ສຳເລັດ",
           text: "ເຂົ້າສູ່ລະບົບສຳເລັດ",

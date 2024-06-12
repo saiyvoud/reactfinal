@@ -21,9 +21,9 @@ const AccessListRow = ({ data, onDeleteSuccess }) => {
         <p>{timeFormatter(data.createdAt)}</p>
         <p>{timeFormatter(data.updateAt)}</p>
         <div className="flex gap-2 justify-center items-center">
-          <NavLink to={`/accessRight/edit/${data.uuid}`}>
+          {/* <NavLink to={`/accessRight/edit/${data.uuid}`}>
             <ModeOutlined />
-          </NavLink>
+          </NavLink> */}
           <DeleteButton id={data.uuid} onSuccess={onDeleteSuccess} deleteApi={DeleteUserApi}/>
         </div>
       </div>

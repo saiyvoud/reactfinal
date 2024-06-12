@@ -39,7 +39,6 @@ const subject = Yup.object().shape({
 });
 
 const user = Yup.object().shape({
-    profile: Yup.string().required('ກະລຸນາອັບໂຫຼດຮູບພາບ'),
     role: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
     email: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
     password: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
@@ -51,7 +50,7 @@ const major = Yup.object().shape({
 
 const classRoom = Yup.object().shape({
     cName: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
-    termNo: Yup.string().matches(/^\d+$/, 'ກະລຸນາປ້ອນຕົວເລກຖືກຕ້ອງ').required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
+    termNo: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
     year_id: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
     major_id: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
 })

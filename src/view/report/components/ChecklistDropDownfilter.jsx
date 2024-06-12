@@ -76,7 +76,7 @@ const ReportDropDownfilter = ({onFinishedSelectDropDown}) => {
                     <option value="" disabled className="text-gray-200">{(loading ? "ກຳລັງໂຫຼດ..." : "--ເລືອກຫ້ອງ--")}</option>
                     {classRoom?.map((item, index) => (
                         <option key={index} value={item?.cUuid}>
-                            {item?.cName}
+                            {item?.cName} -- ປີ({item?.yearNumber}) -- ({item?.schoolyear}) -- ເທີມ({item?.termNo})
                         </option>
                     ))}
                 </select>

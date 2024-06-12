@@ -1,4 +1,6 @@
 import Swal from "sweetalert2";
+import { SECREAT_KEY } from "../constant";
+import CryptoJS from "crypto-js";
 
 export function timeFormatter (value) {
     if(!value || value === '' || (typeof value !== 'string')) return "--";
@@ -34,4 +36,21 @@ export function getCurrentDate () {
     const date = new Date();
     const currentDate = date.getFullYear() + "-" + (date.getMonth() + 1 + "").padStart(2, "0") + "-" + ((date.getDate()) + "").padStart(2, "0");
     return currentDate;
+}
+
+export function encryptData (data) {
+  return CryptoJS.AES.encrypt(data, SECREAT_KEY).toString();
+}
+
+export function decryptData (data) {
+  return CryptoJS.AES.decrypt(data, SECREAT_KEY).toString(CryptoJS.enc.Utf8);
+}
+
+export function isAllowedRole (allowedRoles) {
+  const encryptedRole = localStorage.getItem("role");
+  const currentRole = decryptData(encryptedRole);
+  if (!(allowedRoles.includes(currentRole))) {
+    return false;
+  }
+  return true;
 }

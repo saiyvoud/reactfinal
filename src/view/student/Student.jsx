@@ -45,7 +45,7 @@ const Student = () => {
     <Sidebar>
       <div className="px-10 py-5 ">
         <div className="w-full flex items-center justify-between mb-3">
-          <h1>Students</h1>
+          <h1>ນັກສຶກສາ</h1>
           <div>
             <ExportButton data={data} />
             <button

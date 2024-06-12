@@ -68,7 +68,7 @@ export const AddUserApi = async (data) => {
     password: data?.password || "",
   }
   try {
-    const response = await axios.post(ApiPath.register, mappingData, config);
+    const response = await axios.post(ApiPath.addUser, mappingData, config);
 
     console.log("response of fuc addUser ::=>");
     console.log(response);

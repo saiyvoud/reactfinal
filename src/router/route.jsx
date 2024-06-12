@@ -46,7 +46,11 @@ import EditClassDetail from "../view/classDetail/components/EditClassDetail";
 import NewCheckList from "../view/checklist/components/NewChecklist";
 import ChecklistHistory from "../view/checklistHistory/ChecklistHistory";
 import StudentReport from "../view/report/components/StudentReport";
+import { Role } from "../constant";
 const RouterPath = () => {
+
+  const { admin, teacher, student } = Role;
+
   const router = createBrowserRouter([
     {
       path: "/register",
@@ -59,7 +63,7 @@ const RouterPath = () => {
     {
       path: "/",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <Dashboard />
         </Authentication>
       ),
@@ -67,7 +71,7 @@ const RouterPath = () => {
     {
       path: "/student",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <Student />
         </Authentication>
       ),
@@ -75,7 +79,7 @@ const RouterPath = () => {
     {
       path: "/student/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddStudent />
         </Authentication>
       ),
@@ -83,7 +87,7 @@ const RouterPath = () => {
     {
       path: "/student/edit/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditStudent />
         </Authentication>
       ),
@@ -91,7 +95,7 @@ const RouterPath = () => {
     {
       path: "/verify_student",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <FormsVertfy />
         </Authentication>
       ),
@@ -99,7 +103,7 @@ const RouterPath = () => {
     {
       path: "/teacher",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <Teacher />
         </Authentication>
       ),
@@ -107,7 +111,7 @@ const RouterPath = () => {
     {
       path: "/teacher/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddTeacher />
         </Authentication>
       ),
@@ -115,7 +119,7 @@ const RouterPath = () => {
     {
       path: "/teacher/edit/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditTeacher />
         </Authentication>
       ),
@@ -123,7 +127,7 @@ const RouterPath = () => {
     {
       path: "/class",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <Class />
         </Authentication>
       ),
@@ -131,7 +135,7 @@ const RouterPath = () => {
     {
       path: "/class/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddClass />
         </Authentication>
       ),
@@ -139,7 +143,7 @@ const RouterPath = () => {
     {
       path: "/class/edit/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditClass />
         </Authentication>
       ),
@@ -147,7 +151,7 @@ const RouterPath = () => {
     {
       path: "/classDetail/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <ClassDetail />
         </Authentication>
       ),
@@ -155,7 +159,7 @@ const RouterPath = () => {
     {
       path: "/classDetail/:id/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddClassDetail />
         </Authentication>
       ),
@@ -163,7 +167,7 @@ const RouterPath = () => {
     {
       path: "/classDetail/:id/edit/:cdUuid",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditClassDetail />
         </Authentication>
       ),
@@ -171,7 +175,7 @@ const RouterPath = () => {
     {
       path: "/year",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <Year />
         </Authentication>
       ),
@@ -179,7 +183,7 @@ const RouterPath = () => {
     {
       path: "/year/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddYear />
         </Authentication>
       ),
@@ -187,7 +191,7 @@ const RouterPath = () => {
     {
       path: "/year/edit/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditYear />
         </Authentication>
       ),
@@ -195,7 +199,7 @@ const RouterPath = () => {
     {
       path: "/major",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <Major />
         </Authentication>
       ),
@@ -203,7 +207,7 @@ const RouterPath = () => {
     {
       path: "/major/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddMajor />
         </Authentication>
       ),
@@ -211,7 +215,7 @@ const RouterPath = () => {
     {
       path: "/major/edit/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditMajor />
         </Authentication>
       ),
@@ -219,7 +223,7 @@ const RouterPath = () => {
     {
       path: "/addMajor",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <FormAddMajor />
         </Authentication>
       ),
@@ -227,7 +231,7 @@ const RouterPath = () => {
     {
       path: "/part",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <Part />
         </Authentication>
       ),
@@ -235,7 +239,7 @@ const RouterPath = () => {
     {
       path: "/part/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddPart />
         </Authentication>
       ),
@@ -243,7 +247,7 @@ const RouterPath = () => {
     {
       path: "/part/edit/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditPart />
         </Authentication>
       ),
@@ -251,7 +255,7 @@ const RouterPath = () => {
     {
       path: "/subject",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <Subject />
         </Authentication>
       ),
@@ -259,7 +263,7 @@ const RouterPath = () => {
     {
       path: "/subject/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddSubject />
         </Authentication>
       ),
@@ -267,31 +271,15 @@ const RouterPath = () => {
     {
       path: "/subject/edit/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditSubject />
-        </Authentication>
-      ),
-    },
-    {
-      path: "/table",
-      element: (
-        <Authentication>
-          <TableAll />
-        </Authentication>
-      ),
-    },
-    {
-      path: "/addTableRoom",
-      element: (
-        <Authentication>
-          <AddTableRoom />
         </Authentication>
       ),
     },
     {
       path: "/accessRight",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AccessRight />
         </Authentication>
       ),
@@ -299,7 +287,7 @@ const RouterPath = () => {
     {
       path: "/accessRight/add",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <AddAccessRight />
         </Authentication>
       ),
@@ -307,7 +295,7 @@ const RouterPath = () => {
     {
       path: "/accessRight/edit/:id",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin]}>
           <EditAccessRight />
         </Authentication>
       ),
@@ -315,7 +303,7 @@ const RouterPath = () => {
     {
       path: "/checklist",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin, teacher]}>
           <Checklist />
         </Authentication>
       ),
@@ -323,7 +311,7 @@ const RouterPath = () => {
     // {
     //   path: "/checklist/newChecklist/:id",
     //   element: (
-    //     <Authentication>
+    //      <Authentication allowedRoles={[admin, teacher]}>
     //       <NewCheckList />
     //     </Authentication>
     //   ),
@@ -331,7 +319,7 @@ const RouterPath = () => {
     {
       path: "/checklistHistory/:mUuid/:cUuid/:subUuid/:pUuid",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin, teacher]}>
           <ChecklistHistory />
         </Authentication>
       ),
@@ -339,7 +327,7 @@ const RouterPath = () => {
     {
       path: "/report",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin, teacher, student]}>
           <Report />
         </Authentication>
       ),
@@ -347,7 +335,7 @@ const RouterPath = () => {
     {
       path: "/report/studentReport",
       element: (
-        <Authentication>
+        <Authentication allowedRoles={[admin, teacher, student]}>
           <StudentReport />
         </Authentication>
       ),

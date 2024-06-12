@@ -77,7 +77,7 @@ const ChecklistDropDownfilter = ({onFinishedSelectDropDown}) => {
                     <option value="" disabled className="text-gray-200">{(loading ? "ກຳລັງໂຫຼດ..." : "--ເລືອກຫ້ອງ--")}</option>
                     {classRoom?.map((item, index) => (
                         <option key={index} value={item?.cUuid}>
-                            {item?.cName}
+                            {item?.cName} -- ປີ({item?.yearNumber}) -- ({item?.schoolyear}) -- ເທີມ({item?.termNo})
                         </option>
                     ))}
                 </select>
@@ -88,7 +88,7 @@ const ChecklistDropDownfilter = ({onFinishedSelectDropDown}) => {
                     <option value="" disabled className="text-gray-200">{(loading ? "ກຳລັງໂຫຼດ..." : "--ເລືອກວິຊາ--")}</option>
                     {subject?.map((item, index) => (
                         <option key={index} value={item?.subUuid}>
-                            {item?.subName}
+                            {item?.subName} (ອາຈານ {item?.tNmae}{item?.tSurname})
                         </option>
                     ))}
                 </select>

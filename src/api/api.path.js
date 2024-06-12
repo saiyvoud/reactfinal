@@ -6,6 +6,7 @@ export default class ApiPath {
   // ---- auth ----
   static register = `${baseUrl}/user/register`;
   static login = `${baseUrl}/user/login`;
+  static addUser = `${baseUrl}/user/addUser`;
   static forgotPassword = `${baseUrl}/user/forgot`;
   static changePassword = `${baseUrl}/user/changepassword`;
   static updateUser = `${baseUrl}/user/update`;
