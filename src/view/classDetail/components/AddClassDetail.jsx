@@ -45,6 +45,19 @@ const AddClassDetail = () => {
 
     }, [])
 
+    const autoAddingData = async (AddApi, data, label) => {
+      const response = await AddApi(data);
+      if (!response) {
+        Swal.fire({
+          title: "ຜິດພາດ",
+          text: `ບໍ່ສາມາດເພີ່ມຂໍ້ມູນ${label}ໄດ້ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ`,
+          icon: "error",
+        });
+        return false
+      }
+      return true
+    }
+
   return (
     <Sidebar>
       <div className="w-full px-8">
@@ -63,23 +76,41 @@ const AddClassDetail = () => {
          console.log(values);
          
 
-         return;
+         const studentIdLists = values.student_id.split(',');
 
-        const response = await AddClassDetailApi(values);
-        if(!response){
-            Swal.fire({
-                title: "ຜິດພາດ",
-                text: "ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້, ຂໍ້ຜິດພາດໃນການບັນທຶກຂໍ້ມູນ",
-                icon: "error",
-              });
-            return;
-        }
+        // add every student in the class
+         const resultAdd =  await Promise.all(
+          studentIdLists.map((id) => {
+            const data = {
+              class_id: values.class_id,
+              student_id: id,
+              part_id: values.part_id,
+              subject_id: values.subject_id
+            }
+            return autoAddingData(AddClassDetailApi, data, "ລາຍລະອຽດຫ້ອງ");
+          })
+         )
+
+
+         if (resultAdd.includes(false)) {
+          Swal.fire({
+            title: "ຜິດພາດ",
+            text: "ເກີດຂໍ້ຜິດພາດໃນການເພີ່ມຂໍ້ມູນ",
+            icon: "error",
+          });
+          setLoading(false);
+          return;
+         }
+
+
         Swal.fire({
             title: "ສຳເລັດ",
             text: "ເພີ່ມຂໍ້ມູນສຳເລັດ",
             icon: "success",
           });
           navigate(-1);
+
+        setLoading(false);
 
         return;
 
@@ -103,12 +134,12 @@ const AddClassDetail = () => {
               <p>{item?.sID} ({item?.sName} {item?.sSurname}, {item?.tel})</p>
             )
            }}
-           onChecklistChange={
-            (checked) => setFieldValue("student_id", checked.join(","))
-          }
-          placeholder="-- ເລືອກນັກສຶກສາ --"
-          disable={false}
-            />
+            onChecklistChange={
+              (checked) => setFieldValue("student_id", checked.join(","))
+            }
+            placeholder="-- ເລືອກນັກສຶກສາ --"
+            disable={isSubmitting || loading}
+              />
             <ErrorMessage name="student_id" component="div" className="text-red-500"/>
 
 
