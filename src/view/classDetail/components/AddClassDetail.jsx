@@ -155,7 +155,7 @@ const AddClassDetail = () => {
            <p className=" mb-1 mt-8">ວິຊາ <span className="text-red-500">*</span></p>
            <Field disabled={isSubmitting || loading} name="subject_id" as="select" placeholder="ວິຊາ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >
             <option value="" disabled>--- ເລືອກວິຊາ ---</option>
-            {subject.map((item, index) => <option key={index} value={item.subUuid}>{item.subName}</option>)}
+            {subject.map((item, index) => <option key={index} value={item.subUuid}>{item.subName} (ອາຈານ {item.tName} {item.tSurname})</option>)}
            </Field>
            <ErrorMessage name="subject_id" component="div" className="text-red-500"/>
 

@@ -61,17 +61,17 @@ const StudentReportTableRow = ({ item }) => {
   return (
     <>
       <tr className="border-b">
-        <td className="text-center py-2">{item.sID}</td>
-        <td className="text-center sticky top-0 left-0 bg-white">
+        <td className="text-center px-4 py-2">{item.sID}</td>
+        <td className="text-center px-4 sticky top-0 left-0 bg-white">
           {item.sName} {item.sSurname}
         </td>
-        <td className="text-center">{item.mName}</td>
-        <td className="text-center">{item.subName}</td>
+        <td className="text-center px-4">{item.mName}</td>
+        <td className="text-center px-4">{item.subName}</td>
 
-        <td className="text-center">{item.pName}</td>
-        <td className="text-center">{item.schoolyear}</td>
-        <td className="text-center">{item.termNo}</td>
-        <td className="text-center">
+        <td className="text-center px-4">{item.pName}</td>
+        <td className="text-center px-4">{item.schoolyear}</td>
+        <td className="text-center px-4">{item.termNo}</td>
+        <td className="text-center px-4">
           {item.tName} {item.tSurname}
         </td>
 

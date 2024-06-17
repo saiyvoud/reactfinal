@@ -34,7 +34,6 @@ const part = Yup.object().shape({
 
 const subject = Yup.object().shape({
     subName: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
-    subTime: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
     tUuid: Yup.string().required('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ'),
 });
 

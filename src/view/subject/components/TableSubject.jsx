@@ -15,7 +15,6 @@ function TableSubject({data, loading, onDeleteSuccess}) {
                         <tr className=" bg-blue-500 text-white font-bold  text-sm">
                             <th className="py-2">ລະຫັດວິຊາ</th>
                             <th>ຊື່ວິຊາຮຽນ</th>
-                            <th>ເວລາສອນ</th>
                             <th>ຊືື່ອາຈານສອນ</th>
                             <th>ປະເພດອາຈານ</th>
                             <th>ເວລາສ້າງ</th>
@@ -34,7 +33,6 @@ function TableSubject({data, loading, onDeleteSuccess}) {
                                 {/* <img src={sousaka} width={25} className="rounded-full"></img> */}
                                 {item.subName}
                             </td>
-                            <td className="text-center">{item.subTime}</td>
                             <td className="text-center">{item.tName}</td>
                             <td className="text-center">{item.tType}</td>
                             <td className="text-center">{timeFormatter(item.createdAt)}</td>

@@ -60,7 +60,6 @@ export const AddSubjectApi = async (data) => {
   };
   const mappingData = {
     subName: data?.subName || "",
-    subTime: data?.subTime || "",
     teacher_id: data?.tUuid || "",
   }
   try {
@@ -90,7 +89,6 @@ export const UpdateSubjectApi = async (id, data) => {
   };
   const mappingData = {
     subName: data?.subName || "",
-    subTime: data?.subTime || "",
     teacher_id: data?.tUuid || "",
   }
   try {

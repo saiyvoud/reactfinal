@@ -88,7 +88,7 @@ const ChecklistDropDownfilter = ({onFinishedSelectDropDown}) => {
                     <option value="" disabled className="text-gray-200">{(loading ? "ກຳລັງໂຫຼດ..." : "--ເລືອກວິຊາ--")}</option>
                     {subject?.map((item, index) => (
                         <option key={index} value={item?.subUuid}>
-                            {item?.subName} (ອາຈານ {item?.tNmae}{item?.tSurname})
+                            {item?.subName} (ອາຈານ {item?.tName} {item?.tSurname})
                         </option>
                     ))}
                 </select>

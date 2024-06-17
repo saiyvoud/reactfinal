@@ -31,17 +31,17 @@ const ChecklistTableRow = forwardRef(({ item, disable, selectedDate }, ref) => {
   return (
     <>
       <tr className="border-b text-center">
-        <td className="text-center py-2">{item.sID}</td>
+        <td className="text-center px-4 py-2">{item.sID}</td>
         <td>
           {item.sName} {item.sSurname}
         </td>
-        <td className="text-center">{item.mName}</td>
-        <td className="text-center">{item.subName}</td>
+        <td className="text-center px-4">{item.mName}</td>
+        <td className="text-center px-4">{item.subName}</td>
 
-        <td className="text-center">{item.pName}</td>
-        <td className="text-center">{item.schoolyear}</td>
-        <td className="text-center">{item.termNo}</td>
-        <td className="text-center">
+        <td className="text-center px-4">{item.pName}</td>
+        <td className="text-center px-4">{item.schoolyear}</td>
+        <td className="text-center px-4">{item.termNo}</td>
+        <td className="text-center px-4">
           {item.tName} {item.tSurname}
         </td>
         <td className="text-center py-2">

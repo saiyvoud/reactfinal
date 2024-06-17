@@ -25,7 +25,6 @@ const AddSubject = () => {
         enableReinitialize
        initialValues={{
         subName: "IT",
-        subTime: "8:00-9:30",
         tUuid: '',
        }}
        validationSchema={validationSchema.subject}
@@ -60,10 +59,6 @@ const AddSubject = () => {
             <p className=" mb-1 mt-8">ຊື່ວິຊາ <span className="text-red-500">*</span></p>
            <Field disabled={isSubmitting} name="subName" placeholder="ຊື່ວິຊາ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
            <ErrorMessage name="subName" component="div" className="text-red-500"/>
-           {/* subTime */}
-           <p className=" mb-1 mt-8">ເວລາສອນ <span className="text-red-500">*</span></p>
-           <Field disabled={isSubmitting} name="subTime" placeholder="ເວລາສອນ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" />
-           <ErrorMessage name="subTime" component="div" className="text-red-500"/>
            {/* tUuid */}
            <p className=" mb-1 mt-8">ເລືອກອາຈານ <span className="text-red-500">*</span></p>
            <Field disabled={isSubmitting} name="tUuid" as="select" placeholder="ເລືອກອາຈານ..." className="py-2 px-3 w-full bg-slate-100 rounded-lg border" >
